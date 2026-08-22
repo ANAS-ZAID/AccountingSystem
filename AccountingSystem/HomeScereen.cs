@@ -310,8 +310,8 @@ namespace AccountingSystem
         }
 
         private void btnGotoAccountingSystemScereen_Click(object sender, EventArgs e)
-        {  //AccountingSystem
-            openChildForm(new AccountingSystem.view.Screens.AccountingSystem(), sender);
+        {  //AccountingSystem 
+            openChildForm(new view.Screens.AccountingSystem(), sender);
         }
 
         private void btnGoItemsAndWarehouses_Click(object sender, EventArgs e)
