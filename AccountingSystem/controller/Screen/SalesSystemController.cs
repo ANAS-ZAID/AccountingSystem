@@ -1,0 +1,1325 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Data.Entity;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
+using AccountingSystem.core.Functions;
+using AccountingSystem.core.shared;
+using AccountingSystem.NewModel.EFModel;
+
+using AccountingSystem.view.SupScreens.ClassifyManagament;
+using System.Data.Entity.Migrations;
+using AccountingSystem.view.SupScreens.SalesSystem;
+
+using AccountingSystem.NewModel.RCLDModel;
+using AccountingSystem.view.ReportPages;
+using System.Transactions;
+using System.Threading;
+using AccountingSystem.controller.Screen;
+namespace AccountingSystem.controller
+{
+   public class SalesSystemController
+    {
+        public List<string> saleColumnsNamesInAR = new List<string> { "الرقم", "رقم الفاتوره ", "نوع الدفع","التأريخ", "المخزن", "الصندوق", "العميل", "المبلغ", "العمله", "المبلغ المدفوع", "المتبقي" ,"الخصم","نوع السعر","تأريخ الإضافه"};//, "تأريخ التعديل"
+        public List<string> purchaseColumnsNamesInAR = new List<string> { "الرقم", "رقم الفاتوره ", "نوع الدفع","التأريخ", "المخزن", "الصندوق", "العميل", "المبلغ", "العمله", "المبلغ المدفوع", "المتبقي" ,"الخصم","نوع السعر","تأريخ الإضافه"};//, "تأريخ التعديل"
+        public List<string> paymentTypes = new List<string> { "نقد", "اجل" };
+        public List<string> orderTypes = new List<string> { "محلي", "سفري","سفري معنا" };
+        public List<string> priceTypes = new List<string> { "تجزئه", "جمله" };
+        DateTime? startDate = null;
+        DateTime? endDate = null;
+        public BindingSource dataSource;
+        public dynamic allData;
+        AccountingDbContext dBContext;
+        public  TransactionType transactionType;
+        public List<Classify> supItms;
+        public SaleDetail selectedSaleDetail;
+        public Dictionary<int, SaleDetail> selectedSaleDetails;
+        public List<SaleDetail> newSaleDetails;
+        decimal TotalProfit;
+        public List<Currency> currencies{ get { return dBContext.Currencies.ToList(); }}
+        public List<Employee> employees { get { return dBContext.Employees.ToList(); }}
+        public List<Customer> customers{ get { return dBContext.Customers.ToList(); }}
+        public List<Supplier> suppliers{ get { return dBContext.Suppliers.ToList(); }}
+        public List<Store> stores{ get { return dBContext.Stores.ToList(); }}
+        public List<Cashier> cashiers{ get { return dBContext.Cashiers.ToList(); }}
+        public Sale tempSale;
+        public Purchase tempPurchase;
+        public PurchaseDetail selectedPurchaseDetail;
+        public Dictionary<int, PurchaseDetail> selectedPurchaseDetails;
+        public List<PurchaseDetail> newPurchaseDetails;
+        List<JournalEntry> tempJournalEntries;
+        public DateTime? lastDate;
+        string saleDescription;
+        public bool isSale { get { return transactionType == TransactionType.فاتورة_مبيعات; } }
+        public bool HasHomeScreenDataProcessed;
+        public bool HasAddAndUpdateScreenDataProcessed;
+        bool isReturned = false;
+     //  public bool HasAddAndUpdateScreenDataProcessed;
+        public SalesSystemController(TransactionType transactionType, bool isReturned = false)
+        {   HasHomeScreenDataProcessed = false;
+            selectedSaleDetails = new Dictionary<int, SaleDetail>();
+            selectedPurchaseDetails = new Dictionary<int, PurchaseDetail>();
+            dBContext = new AccountingDbContext();
+            dataSource = new BindingSource();
+            groups = dBContext.ClassifyGroups.ToList();
+            supItms = dBContext.Classifies.Where(a => a.type == "فرعي").ToList();
+            this.transactionType = transactionType;
+            this.isReturned = isReturned;
+            lodeData();
+        }
+
+       
+
+        public SalesSystemController()
+        {
+        
+            dBContext = new AccountingDbContext();
+            dataSource = new BindingSource();
+       
+            lodeData();
+        }
+        void lodeData()
+        {
+            clearTempData();
+            if (isSale) saleLodeData();
+            else purchaseLodeData();
+        }
+
+
+        public void clearTempData()
+        {startDate=null; endDate=null;
+           
+            HasAddAndUpdateScreenDataProcessed = false;
+            if (isSale)
+                clearTempDataSale();
+            else clearTempDataPurchase();
+        }
+        void clearTempDataSale()
+        {
+            tempSale = new Sale() { paymentType = PaymentType.نقد.ToString(), priceType = PriceType.تجزئه.ToString(),
+                orderType = "محلي", date = DateTime.Now, Currency = currencies.FirstOrDefault(x => x.currencyType == "رئيسية"), Store = stores.FirstOrDefault(), Cashier = cashiers.FirstOrDefault() };
+            tempSale.SaleDetails = new List<SaleDetail>();
+            newSaleDetails = new List<SaleDetail>();
+            selectedSaleDetail = null;
+            selectedSaleDetails = new Dictionary<int, SaleDetail>();
+        }
+        void clearTempDataPurchase()
+        {
+            tempPurchase = new Purchase() { paymentType = PaymentType.نقد.ToString(), priceType = PriceType.تجزئه.ToString(),
+                
+                date =  DateTime.Now, Currency = currencies.FirstOrDefault(x => x.currencyType == "رئيسية"), Store = stores.FirstOrDefault(), Cashier = cashiers.FirstOrDefault() };
+            tempPurchase.PurchaseDetails = new List<PurchaseDetail>();
+            newPurchaseDetails = new List<PurchaseDetail>();
+            selectedPurchaseDetail = null;
+            selectedPurchaseDetails = new Dictionary<int, PurchaseDetail>();
+        } 
+        public Classify[] copySupItms
+        {  get {
+                var supItms = dBContext.Classifies.Where(a => a.type == "فرعي").ToList();
+                bool isItemNull = (selectedSaleDetail?.item == null && isSale) || (selectedPurchaseDetail?.item == null && !isSale);
+                if (isItemNull)
+                {
+                    if (supItms.Any())
+                        supItms.Insert(0, new Classify() { nameAr = "", id = 0 });
+                }
+                else
+                {
+                    int index = supItms.IndexOf(isSale? selectedSaleDetail?.item:selectedPurchaseDetail?.item);
+                    if (index >= 0)
+                    {
+                        supItms[index] = supItms[0];
+                        supItms[0] = isSale ? selectedSaleDetail?.item : selectedPurchaseDetail?.item;
+                    }
+                    else
+                        supItms.Insert(0, new Classify() { nameAr = "", id = 0 });
+                }
+                return supItms.ToArray(); } }
+        public List<ClassifyGroup> groups;
+        public int availableQuantityForSelectedSaleDetail()
+        {
+            int quantity = 0;
+            if (selectedSaleDetail.MeasurementsItem!=null)
+                quantity = AppDBFunctions.availableQuantity(selectedSaleDetail.MeasurementsItem.id);
+            return quantity;
+        }
+        public List<Unit> units { get { return dBContext.Units.ToList(); } }
+        public bool isWholesale { get
+            {
+                if (isSale)
+                    return tempSale.type == PriceType.جمله.ToString();
+                else return tempPurchase.priceType==PriceType.جمله.ToString();
+            } }
+        public Unit[] copyUnits
+        { get {
+
+                Unit[] tempList = new Unit[units.Count + 1];
+                units.CopyTo(tempList);
+                if (units.Any())
+                {
+                    Unit temp = tempList[0];
+
+                    tempList[units.Count] = temp;
+                }
+                tempList[0] = new Unit() { name = "", id = 0 };
+
+
+                return tempList; } }
+        public IEnumerable<Classify> getItemByGroupId(int groupId)
+        {
+            return groupId == 0 ? supItms : supItms.Where(i => i.ClassifyGroupId == groupId);
+        } 
+        public IEnumerable<Classify> searchItem(string name,int groupId)
+        {
+            return groupId == 0 ? supItms.Where(i=> i.nameAr.Contains(name)|| i.nameEn.Contains(name)) : supItms.Where(i => i.ClassifyGroupId == groupId&& (i.nameAr.Contains(name) || i.nameEn.Contains(name)));
+        }
+       
+      
+        public ProsessesType prosessesType { get; set; }
+        public void removeSelectedDetailAt(int key)
+        {
+            if(isSale)
+             removeSelectedSaleDetailAt(key);
+            else 
+                removeSelectedPurchaseDetailAt(key);
+
+        }
+         void removeSelectedSaleDetailAt(int key)
+        {
+            if(selectedSaleDetails.ContainsKey(key))
+                selectedSaleDetails.Remove(key);
+        }
+        void removeSelectedPurchaseDetailAt(int key)
+        {
+            if (selectedPurchaseDetails.ContainsKey(key))
+            {
+                selectedPurchaseDetails.Remove(key);
+              //  AppDialogAleart.showAleartNoPermissions("selectedPurchaseDetails=" + key);
+            }
+        }
+      public  void addSelectedSaleDetail(int key,SaleDetail saleDetail)
+        {
+            if (!selectedSaleDetails.ContainsKey(key))
+                selectedSaleDetails.Add(key, saleDetail);
+            selectedSaleDetail = saleDetail;
+        }
+       public void addSelectedPurchaseDetail(int key, PurchaseDetail purchaseDetail)
+        {
+            if (!selectedPurchaseDetails.ContainsKey(key))
+                selectedPurchaseDetails.Add(key, purchaseDetail);
+            selectedPurchaseDetail = purchaseDetail;
+        }
+        public void selectedItem(object value,int rowNumber)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    selectedItemSale(value, rowNumber);
+                else
+                    selectedItemPurchase(value, rowNumber);
+            }
+
+
+        }
+         void selectedItemSale(object value, int rowNumber)
+        {
+            selectedSaleDetail = new SaleDetail() { item = null, MeasurementsItem = null };
+            selectedSaleDetail.item = (Classify)value ?? null;
+
+            removeSelectedSaleDetailAt(rowNumber);
+            if (selectedSaleDetail.item.id != 0)
+            {
+                if (selectedSaleDetail.item.MeasurementsItems.Count > 1)
+                {
+                    DialogSelecteMeasurementsItem dialogSelecteMeasurementsItem = new DialogSelecteMeasurementsItem(selectedSaleDetail.item.MeasurementsItems.ToList());
+                    dialogSelecteMeasurementsItem.ShowDialog();
+
+                }
+                else
+                {
+                    DialogSelecteMeasurementsItem.selectedMeasurementsItem = selectedSaleDetail.item.MeasurementsItems.FirstOrDefault();
+                }
+                selectedSaleDetail.MeasurementsItem = DialogSelecteMeasurementsItem.selectedMeasurementsItem;
+
+                addSelectedSaleDetail(rowNumber,selectedSaleDetail);
+                selectedSaleDetail.unitPrice = isWholesale? selectedSaleDetail.MeasurementsItem?.WholesalePrice : selectedSaleDetail.MeasurementsItem ?.sellingPrice??0;
+                selectedSaleDetail.descountPrice = selectedSaleDetail.MeasurementsItem.descountPrice;
+                selectedSaleDetail.quantity = 1;
+            }
+            else
+            {
+                selectedSaleDetail = null;
+            }
+        }
+        void selectedItemPurchase(object value, int rowNumber)
+        {
+            selectedPurchaseDetail =new PurchaseDetail() { item = null, MeasurementsItem = null };
+            selectedPurchaseDetail.item = (Classify)value ?? null;
+
+            removeSelectedPurchaseDetailAt(rowNumber);
+            if (selectedPurchaseDetail.item.id != 0)
+            {
+                if (selectedPurchaseDetail.item.MeasurementsItems.Count > 1)
+                {
+                    DialogSelecteMeasurementsItem dialogSelecteMeasurementsItem = new DialogSelecteMeasurementsItem(selectedPurchaseDetail.item.MeasurementsItems.ToList());
+                    dialogSelecteMeasurementsItem.ShowDialog();
+
+                }
+                else
+                {
+                    DialogSelecteMeasurementsItem.selectedMeasurementsItem = selectedPurchaseDetail.item.MeasurementsItems.FirstOrDefault();
+                }
+                selectedPurchaseDetail.MeasurementsItem = DialogSelecteMeasurementsItem.selectedMeasurementsItem;
+
+                  addSelectedPurchaseDetail(rowNumber, selectedPurchaseDetail);
+                selectedPurchaseDetail.unitPrice = isWholesale ? selectedPurchaseDetail.MeasurementsItem?.WholesalePurchasePrice : selectedPurchaseDetail.MeasurementsItem?.purchasePrice??0;
+                selectedPurchaseDetail.quantity = 1;
+            }
+            else
+            {
+                selectedPurchaseDetail = null;
+            }
+        }
+        public decimal? wholesaleOrRetailPriceSelectedDetail(int rowNumber)
+        {
+            if (isSale)
+            {
+                if (selectedSaleDetails.ContainsKey(rowNumber))
+                {
+                    return isWholesale ? selectedSaleDetails[rowNumber].MeasurementsItem?.WholesalePrice??0 : selectedSaleDetails[rowNumber].MeasurementsItem?.sellingPrice??0;
+                }      
+            }
+            else
+            {
+                if (selectedPurchaseDetails.ContainsKey(rowNumber))
+                {
+                    return isWholesale ? selectedPurchaseDetails[rowNumber].MeasurementsItem?.WholesalePurchasePrice ?? 0 : selectedPurchaseDetails[rowNumber].MeasurementsItem?.purchasePrice ?? 0;
+                }
+            }
+            return null;
+        }
+        DataTable dataTable = new DataTable();
+        public void saleLodeData()
+        {
+            
+            try
+            {
+              
+                allData = dBContext.Sales.AsNoTracking().OrderByDescending(a => a.id).ToList()
+                    .Select(e => new
+                    {
+                        id = e.id,
+                        number = e.number,
+                        paymentType = e.paymentType,
+                        date = e.date,
+                        store=e.Store?.name,
+                        cashier=e.Cashier?.name,
+                        customer=e.Customer?.name,
+                        sumPrice=e.SaleDetails.ToList().TotalPrice() - e.descountPrice,
+                        currency= e.Currency?.name,
+                        amountPaid = e.amountPaid,
+                        remaining= e.SaleDetails.ToList().TotalPrice() - e.descountPrice-e.amountPaid,
+                        descountPrice =e.descountPrice,
+                        priceType=e.priceType,
+                        enteryDate = e.enteryDate,
+                    }).ToList();
+                saleFillDataGridView();
+            }
+               catch
+                {
+
+                AppDialogAleart.showAleartError();
+            }
+           
+        }
+        public void purchaseLodeData()
+        {
+            
+            try
+            {
+             
+             
+                allData = dBContext.Purchases.AsNoTracking().OrderByDescending(a => a.id).ToList()
+                    .Select(e => new
+                    {
+                        id = e.id,
+                        number = e.number,
+                        paymentType = e.paymentType,
+                        date = e.date,
+                        store = e.Store?.name,
+                        cashier = e.Cashier?.name,
+                        supplier = e.Supplier?.name,
+                        sumPrice = e.PurchaseDetails.ToList().TotalPrice(),
+                        currency = e.Currency?.name,
+                        amountPaid = e.amountPaid,
+                        remaining = e.PurchaseDetails.ToList().TotalPrice() - e.amountPaid,
+                        descountPrice =0,
+                        priceType = e.priceType,
+                        enteryDate = e.enteryDate,
+                    }).ToList();
+                purchaseFillDataGridView();
+            }
+            catch 
+            {
+
+                AppDialogAleart.showAleartError();
+            }
+           
+        }
+        void saleFillDataGridView()
+        {
+            dataTable = new DataTable();
+            foreach (string name in saleColumnsNamesInAR)
+            {
+                dataTable.Columns.Add(name);
+            }
+           //dataSource.DataSource = dataTable;
+            Thread thread = new Thread(saleFillData);
+            thread.Start();
+        }
+        void saleFillData()
+        {
+           
+            foreach (var item in allData)
+            {
+                dataTable.Rows.Add(item.id, item.number,
+                item.paymentType, ((DateTime?)item.date).Format(), item.store,
+                item.cashier, item.customer, ((decimal)item.sumPrice).Format(), item.currency, ((decimal)item.amountPaid).Format(), ((decimal)item.remaining).Format(), ((decimal)item.descountPrice).Format(), item.priceType, ((DateTime?)item.enteryDate).Format());
+            }
+          
+            dataSource.DataSource = dataTable;
+           
+        }
+         void purchaseFillDataGridView()
+        {
+            dataTable = new DataTable();
+            foreach (string name in purchaseColumnsNamesInAR)
+            {
+                dataTable.Columns.Add(name);
+            }
+            //dataSource.DataSource = dataTable;
+            Thread thread = new Thread(purchaseFillData);
+            thread.Start();
+            
+        }
+        void purchaseFillData()
+        {
+         
+            foreach (var item in allData)
+            {
+                dataTable.Rows.Add(item.id, item.number,
+                    item.paymentType, ((DateTime?)item.date).Format(), item.store,
+                    item.cashier, item.supplier, ((decimal)item.sumPrice).Format(), item.currency, ((decimal)item.amountPaid).Format(), ((decimal)item.remaining).Format(), ((decimal)item.descountPrice).Format(), item.priceType, ((DateTime?)item.enteryDate).Format());
+            }
+           
+            dataSource.DataSource = dataTable;
+            //aleart.Close();
+        }
+        public bool find(int id)
+        {
+            clearTempData();
+            bool status = true;
+            try
+            {
+
+                if (isSale)
+                {
+                    clearTempDataSale();
+                    tempSale = dBContext.Sales.OrderByDescending(a => a.id).FirstOrDefault(i => i.id == id);
+                    if (tempSale == null)
+                        throw new Exception();
+
+                    tempSale.SaleDetails = dBContext.SaleDetails.Where(x => x.saleID == id).ToList();
+
+                }
+                else
+                {
+                    clearTempDataPurchase();
+                    tempPurchase = dBContext.Purchases.OrderByDescending(a => a.id).FirstOrDefault(i => i.id == id);
+                    if (tempPurchase == null)
+                        throw new Exception();
+
+                    tempPurchase.PurchaseDetails = dBContext.PurchaseDetails.Where(x => x.purchaseID == id).ToList();
+
+                }
+
+            }
+            catch
+            {
+                AppDialogAleart.showAleartError();
+                status = false;
+            }
+            return status;
+        }
+        public void printInvoice(int id)
+        {
+            if(!find(id))
+                return ;
+
+            List<DataSetBills> detail = new List<DataSetBills>();
+            dynamic bill = new { };
+            if (isSale)
+            {
+               detail=tempSale.SaleDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Select(d => new DataSetBills() { name = d.item.nameAr, unitName = d.MeasurementsItem.Unit.name, quantity = d.quantity ?? 0, unitPrice = d.TotalPrice(), description = d.description }).ToList();
+                bill = new {name="العميل:"+ tempSale.Customer.name, number=tempSale.number.Value.ToString(), date=tempSale.date.Value.ToString(SharedData.formatDisplayDate),store=tempSale.Store.name, type=" بيع("+ tempSale.paymentType+")",currencyName=tempSale.Currency.name , currencyCode= tempSale.Currency.code, amountPaid =(tempSale.amountPaid?? 0).ToString(),
+                    total=(tempSale.SaleDetails.ToList().TotalPrice() - (tempSale.descountPrice??0)).ToString(),
+                    user = tempSale.Employee.name
+                };
+            }
+            else
+            {
+                detail = tempPurchase.PurchaseDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Select(d => new DataSetBills() { name = d.item.nameAr, unitName = d.MeasurementsItem.Unit.name, quantity = d.quantity ?? 0, unitPrice = d.unitPrice ?? 0, description = d.description }).ToList();
+                bill = new { name ="المورد: "+ tempPurchase.Supplier.name, number = tempPurchase.number.Value.ToString(), 
+                    date = tempPurchase.date.Value.ToString(SharedData.formatDisplayDate), store = tempPurchase.Store.name, 
+                    type = " شراء (" + tempPurchase.paymentType + ")", currencyName = tempPurchase.Currency.name, currencyCode = tempPurchase.Currency.code,
+                    amountPaid = (tempPurchase.amountPaid?? 0).ToString() ,total=(tempPurchase.PurchaseDetails.ToList().TotalPrice()).ToString() ,user=tempPurchase.Employee.name};
+
+            }
+          (new ViewPrintingBills(detail, bill)).ShowDialog();
+            clearTempData();
+        }
+        public void search(string number)
+        {
+            if(isSale)
+                searchSale(number);
+            else searchPurchase(number);
+        }
+        public void searchSale(string number)
+        {
+            if (model.LoginData.permissions["sale"].viewPermission.Value)
+            {
+                string customer = tempSale.Customer != null ? tempSale.Customer.name : "";
+                string store = tempSale.Store != null ? tempSale.Store?.name : "";
+                string employee = tempSale.Employee != null ? tempSale.Employee?.name : "";
+                string cashier = tempSale.Cashier != null ? tempSale.Cashier?.name : "";
+                //string currency = tempSale.Currency?.name;
+
+
+                try
+                {
+                    allData = dBContext.Sales.AsNoTracking().OrderByDescending(a => a.id).
+                  Where(
+                          x => startDate != null ? (x.date.Value.Day >= startDate.Value.Day && x.date.Value.Month >= startDate.Value.Month && x.date.Value.Year >= startDate.Value.Year) : true && endDate != null ? (x.date.Value.Day <= endDate.Value.Day && x.date.Value.Month <= endDate.Value.Month && x.date.Value.Year <= endDate.Value.Year) : true
+                           && DbFunctions.Like(x.number.ToString(), "%" + number + "%")
+                           && DbFunctions.Like(x.Customer != null ? x.Customer.name : "", "%" + customer + "%")
+                            && DbFunctions.Like(x.Store != null ? x.Store.name : "", "%" + store + "%")
+                            && DbFunctions.Like(x.Cashier != null ? x.Cashier.name : "", "%" + cashier + "%")
+                            //&& DbFunctions.Like(x.Currency.name, "%" + currency + "%")
+                            && DbFunctions.Like(x.Employee != null ? x.Employee.name : "", "%" + employee + "%")
+                            && DbFunctions.Like(x.paymentType, "%" +tempSale.paymentType+ "%")
+                            && DbFunctions.Like(x.orderType, "%" + tempSale.orderType + "%")
+                             ).
+                        Select(e => new
+                        {
+                            id = e.id,
+                            number = e.number,
+                            paymentType = e.paymentType,
+                            date = e.date,
+                            store = e.Store != null ? e.Store.name : "",
+                            cashier = e.Cashier != null ? e.Cashier.name : "",
+                            customer = e.Customer != null ? e.Customer.name : "",
+                            sumPrice = e.SaleDetails.Any() ? e.SaleDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Sum(x => (x.unitPrice - x.descountPrice * x.unitPrice) * x.quantity) ?? 0 - e.descountPrice : 0,
+                            currency = e.Currency != null ? e.Currency.name : "",
+                            amountPaid = e.amountPaid,
+                            remaining = e.SaleDetails.Any() ? e.SaleDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Sum(x => (x.unitPrice - x.descountPrice * x.unitPrice) * x.quantity) ?? 0 - e.descountPrice - e.amountPaid : 0,
+                            descountPrice = e.descountPrice,
+                            priceType = e.priceType,
+                            enteryDate = e.enteryDate,
+                        }).ToList().Where(
+                        v => ((startDate == null || v.date.Value.Date >= startDate.Value.Date) && (endDate == null || v.date.Value.Date <= endDate.Value.Date))); ;
+
+                    saleFillDataGridView();
+                }
+                catch
+                {
+                    AppDialogAleart.showAleartError();
+                }
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        }
+        public void searchPurchase(string number)
+        {
+            if (model.LoginData.permissions["purchase"].viewPermission.Value)
+            {
+                string supplier = tempPurchase.Supplier != null ? tempPurchase.Supplier.name : "";
+                string store = tempPurchase.Store != null ? tempPurchase.Store?.name : "";
+                string employee = tempPurchase.Employee != null ? tempPurchase.Employee?.name : "";
+                string cashier = tempPurchase.Cashier != null ? tempPurchase.Cashier?.name : "";
+                //string currency = tempSale.Currency?.name;
+
+
+                try
+                {
+                    allData = dBContext.Purchases.AsNoTracking().OrderByDescending(a => a.id).
+                     Where(
+                          x =>  DbFunctions.Like(x.number.ToString(), "%" + number + "%")
+                           && DbFunctions.Like(x.Supplier != null ? x.Supplier.name : "", "%" + supplier + "%")
+                            && DbFunctions.Like(x.Store != null ? x.Store.name : "", "%" + store + "%")
+                            && DbFunctions.Like(x.Cashier != null ? x.Cashier.name : "", "%" + cashier + "%")
+                            && DbFunctions.Like(x.Employee != null ? x.Employee.name : "", "%" + employee + "%")
+                            && DbFunctions.Like(x.paymentType, "%" + tempPurchase.paymentType+ "%")
+                            && DbFunctions.Like(x.priceType, "%" + tempPurchase.priceType + "%")
+                             ).
+                        Select(e => new
+                        {
+                            id = e.id,
+                            number = e.number,
+                            paymentType = e.paymentType,
+                            date = e.date,
+                            store = e.Store.name,
+                            cashier = e.Cashier.name,
+                            supplier = e.Supplier.name,
+                            sumPrice = e.PurchaseDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Sum(x => x.unitPrice * x.quantity) ?? 0,
+                            currency = e.Currency.name,
+                            amountPaid = e.amountPaid,
+                            remaining = e.PurchaseDetails.Where(x => x.type != MeasurementsItemType.مركب.ToString()).Sum(x => x.unitPrice * x.quantity) ?? 0 - e.amountPaid,
+                            descountPrice = 0,
+                            priceType = e.priceType,
+                            enteryDate = e.enteryDate,
+                        }).ToList().Where(
+                        v => ((startDate == null || v.date.Value.Date >= startDate.Value.Date) && (endDate == null || v.date.Value.Date <= endDate.Value.Date))); ;
+                    purchaseFillDataGridView();
+                }
+                catch
+                {
+                    AppDialogAleart.showAleartError();
+                }
+            }else AppDialogAleart.showAleartNoPermissions();
+        }
+        public int newInvoiceNumber { get { 
+            Random random = new Random(100000);
+                int newNum = 1;
+
+                  b:
+                     newNum = random.Next(1, 100000);
+                    var s = dBContext.Sales.Where(x => x.number ==newNum);
+                    var p = dBContext.Purchases.Where(x => x.number ==newNum);
+                    if (s.Any()||p.Any())
+                        goto b;
+            
+                return newNum;
+            } }
+        public Currency GetCurrentCurrency()
+        {
+            return isSale ? tempSale.Currency : tempPurchase.Currency;
+        }
+        public decimal GetCurrentExchange() {
+            int n = (isSale ? tempSale.number : tempPurchase.number)??0;
+            return dBContext.JournalEntries.FirstOrDefault(x => x.transactionId == n && x.transactionType == transactionType.ToString()).ExchangeRate??0;
+        }
+        public bool dataProcessing(string number, string descount, string amountPaid,string exchangeRateString)
+        {
+            decimal exchangeRate=1;
+          
+            var currency= isSale? tempSale.Currency :tempPurchase.Currency;
+            if (!ValidatingData.validatingData(number, "رقم الفاتوره"))
+                return false;
+           int newNumber = int.Parse(number);
+            if (!isSale)
+                if (!ValidatingData.validatingData(tempPurchase.Supplier, "المورد",false))
+                                           return false;
+            if(isSale)
+            if (!ValidatingData.validatingData(tempSale.Customer, "العميل",false))
+                return false;
+            if (!fillInvoiceDetail())
+                 return false;
+            if (currency != null && currency.currencyType != "رئيسية")
+            {
+                if (!ValidatingData.validatingData(exchangeRateString, "سعر التحويل"))
+                    return false;
+               else
+                    exchangeRate=decimal.Parse(exchangeRateString);
+            }
+            if (isSale)
+            {//exchangeRate=tempSale.Currency?.exchangeRate??1;
+              
+
+                if (prosessesType == ProsessesType.add)
+                {  tempSale.enteryDate = DateTime.Now; lastDate = tempSale.date; tempSale.employeeId = model.LoginData.employee?.id;
+                    tempSale.brancheId = model.LoginData.branch?.id;
+                }
+                tempSale.descountPrice = descount.ToDecimal();
+                tempSale.amountPaid = amountPaid.ToDecimal();
+                tempSale.number = newNumber;
+                tempSale.currencyId = tempSale.Currency.id;
+                tempSale.customerId = tempSale.Customer.id;
+                tempSale.cashierId = tempSale.Cashier.id;
+                tempSale.storeId = tempSale.Store.id;
+                //tempSale.enteryDate = DateTime.Now;
+
+                tempSale.type=transactionType.ToString();
+
+                decimal total = newSaleDetails.TotalPrice();
+                decimal totalAf = total - tempSale.descountPrice ?? 0;
+                string maD = TotalProfit >= 0 ? "لكم ربح " : "عليكم ";
+                string maS = TotalProfit >= 0 ? "عليكم " : "لكم ربح ";
+                JournalEntry journalEntrySalesDifference = new JournalEntry() { transactionId = newNumber, accountId = 17, 
+                    currencyId = tempSale.currencyId, ExchangeRate = exchangeRate,
+                    transactionType = TransactionType.قيد_تمتيك.ToString(),
+                    transactionDate = tempSale.date,debit=  TotalProfit < 0 ? TotalProfit*0 : 0, credit = TotalProfit>=0?TotalProfit:0,
+                    description = $"{maD} فارق مبيعات من فاتورة مبيعات رقم:" + newNumber + " من العميل/ " + tempSale.Customer.name };
+
+                JournalEntry journalEntryStoreSalesDifference = new JournalEntry()
+                {
+                    transactionId = newNumber,
+                    accountId = tempSale.Store.accountId,
+                    currencyId = tempSale.currencyId,
+                    ExchangeRate = Convert.ToDecimal(exchangeRate),
+                    transactionType = TransactionType.قيد_تمتيك.ToString(),
+                    transactionDate = tempSale.date,
+                    credit = TotalProfit < 0 ? TotalProfit * 0 : 0,
+                    debit = TotalProfit >= 0 ? TotalProfit : 0,
+                    description = $"{maS} فارق مبيعات من فاتورة مبيعات رقم:" + newNumber + " من العميل/ " + tempSale.Customer.name
+                };
+                // JournalEntry journalEntrySalesDifference = new JournalEntry() { transactionId = newNumber, accountId = 17, currencyId = tempSale.currencyId, ExchangeRate = Convert.ToDecimal(exchangeRate), transactionType = transactionType.ToString(), transactionDate = tempSale.date, credit = total, description = "لكم فاتورة مبيعات رقم:" + newNumber + " من العميل/ " + tempSale.Customer.name };
+                JournalEntry journalEntryStore = new JournalEntry() { transactionId = newNumber, accountId = tempSale.Store.accountId, currencyId = tempSale.currencyId, ExchangeRate =exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempSale.date, credit = totalAf, debit = 0, description = "لكم فاتورة مبيعات رقم:" + newNumber + " من العميل/ " + tempSale.Customer.name };
+                JournalEntry journalEntryCustomer = new JournalEntry() { transactionId = newNumber, accountId = tempSale.Customer.accountId, currencyId = tempSale.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempSale.date, debit = totalAf, credit = 0, description = "عليكم فاتورة مبيعات رقم:" + newNumber };
+                tempJournalEntries = new List<JournalEntry> { journalEntryStore, journalEntryCustomer, };//journalEntrySalesDifference, journalEntryStoreSalesDifference 
+
+                if (tempSale.amountPaid > 0)
+                {
+                    string n = tempSale.amountPaid != totalAf ? " مقدم " : " مسدد ";
+                    string d = ($" مبلغ {n} من  فاتورة مبيعات رقم: ") + newNumber;
+                    JournalEntry journalEntryCustomer2 = new JournalEntry() { transactionId = newNumber, accountId = tempSale.Customer.accountId, currencyId = tempSale.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempSale.date, credit = tempSale.amountPaid, debit = 0, description = " لكم " + d };//+ saleDescription 
+                    JournalEntry journalEntryCashir = new JournalEntry() { transactionId = newNumber, accountId = tempSale.Cashier.accountId, currencyId = tempSale.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempSale.date, debit = tempSale.amountPaid, credit = 0, description = " عليكم " + d + " للعميل " + tempSale.Customer.name  };//+ saleDescription
+                    tempJournalEntries.Add(journalEntryCustomer2);
+                    tempJournalEntries.Add(journalEntryCashir);
+                }
+                //AppDialogAleart.showAleartNoPermissions(tempSale.date.Value.ToString());
+
+            }
+            else
+            {
+               // exchangeRate = tempPurchase.Currency?.exchangeRate ?? 1;
+                if (prosessesType == ProsessesType.add)
+                {  tempPurchase.enteryDate = DateTime.Now; lastDate = tempPurchase.date; tempPurchase.employeeId = model.LoginData.employee?.id; }
+                tempPurchase.amountPaid = amountPaid.ToDecimal();
+                //AppDialogAleart.showAleartNoPermissions(tempPurchase.date.Value.ToString());
+                tempPurchase.currencyId = tempPurchase.Currency.id;
+                tempPurchase.number = newNumber;
+                tempPurchase.supplierId = tempPurchase.Supplier.id;
+                tempPurchase.cashierId = tempPurchase.Cashier.id;
+                tempPurchase.storeId = tempPurchase.Store.id;
+
+                decimal total = newPurchaseDetails.TotalPrice();
+                tempPurchase.type=transactionType.ToString();
+               
+
+                JournalEntry journalEntryStore = new JournalEntry() { transactionId = newNumber, accountId = tempPurchase.Store.accountId, currencyId = tempPurchase.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempPurchase.date, credit = 0, debit = total, description = "عليكم فاتورة مشتريات رقم:" + newNumber + " من المورد/ " + tempPurchase.Supplier.name };
+                JournalEntry journalEntryCustomer = new JournalEntry() { transactionId = newNumber, accountId = tempPurchase.Supplier.accountId, currencyId = tempPurchase.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempPurchase.date, debit = 0, credit =total, description = "لكم فاتورة مشتريات رقم:" + newNumber };
+                tempJournalEntries = new List<JournalEntry> { journalEntryStore, journalEntryCustomer };
+
+                if (tempPurchase.amountPaid > 0)
+                {
+                    string n = tempPurchase.amountPaid != total ? "مقدم" : "مسدد";
+                    string d = ($" مبلغ {n} من  فاتورة مشتريات رقم: ") + newNumber;
+                    JournalEntry journalEntrySupplier = new JournalEntry() { transactionId = newNumber, accountId = tempPurchase.Supplier.accountId, currencyId = tempPurchase.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempPurchase.date, credit = 0, debit = tempPurchase.amountPaid, description = "عليكم " + d };
+                    JournalEntry journalEntryCashir = new JournalEntry() { transactionId = newNumber, accountId = tempPurchase.Cashier.accountId, currencyId = tempPurchase.currencyId, ExchangeRate = exchangeRate, transactionType = transactionType.ToString(), transactionDate = tempPurchase.date, debit =0, credit = tempPurchase.amountPaid, description = "لكم " + d + " للمورد" + tempPurchase.Supplier.name };
+                    tempJournalEntries.Add(journalEntrySupplier);
+                    tempJournalEntries.Add(journalEntryCashir);
+                }
+            }
+
+            if (prosessesType == ProsessesType.add)
+                return add();
+            if (prosessesType == ProsessesType.update)
+                return update(newNumber);
+
+            return true;
+        }
+        public bool add()
+        {
+            if(isSale)
+                return addSale();
+            else return addPurchase();
+        }
+        public bool update(int newNumber)
+        {
+            if(isSale)
+                return updateSale(newNumber);
+            else return updatePurchase(newNumber);
+            
+        }
+         bool addSale()
+        {
+            bool status = false;
+
+            using (var transaction = dBContext.Database.BeginTransaction())
+            {
+
+                try
+                {
+                    var any = dBContext.Sales?.FirstOrDefault(x =>x.number==tempSale.number);
+                    if (any != null)
+                    {
+                        AppDialogAleart.showAleartPreExistingData("توجد فاتوره سابقه بهذا الرقم");
+                        return false;
+                    }
+                    dBContext.JournalEntries.AddRange(tempJournalEntries);
+                    tempSale.SaleDetails = newSaleDetails;
+                   dBContext.Sales.Add(tempSale);
+                    dBContext.SaveChanges();
+                    transaction.Commit();
+                    status = true;
+                   AppDialogAleart.showAleartSuccess();
+                    //AppDialogAleart.showAleartNoPermissions(tempSale.date.Value.ToString());
+
+                    lodeData();
+
+                }
+                catch(DbEntityValidationException e) 
+                {
+                  
+                    transaction.Rollback();
+                   AppDialogAleart.showEntityValidationErrors(e);
+                   AppDialogAleart.showAleartError();
+                    status = false;
+
+                }
+            }
+
+            return status;
+        }
+        bool addPurchase()
+        {
+            bool status = false;
+
+            using (var transaction = dBContext.Database.BeginTransaction())
+            {
+
+                try
+                {
+
+                    var any = dBContext.Purchases?.FirstOrDefault(x =>x.number==tempPurchase.number);
+                    if (any != null)
+                    {
+                        AppDialogAleart.showAleartPreExistingData("توجد فاتوره سابقه بهذا الرقم");
+                        return false;
+                    }
+                    dBContext.JournalEntries.AddRange(tempJournalEntries);
+                    tempPurchase.PurchaseDetails = newPurchaseDetails;
+                   dBContext.Purchases.Add(tempPurchase);
+                    dBContext.SaveChanges();
+                    transaction.Commit();
+                    status = true;
+                   AppDialogAleart.showAleartSuccess();
+                    //AppDialogAleart.showAleartNoPermissions(tempPurchase.date.Value.ToString());
+
+                    lodeData();
+
+                }
+                catch 
+                {
+
+                    transaction.Rollback();
+     
+                    AppDialogAleart.showAleartError();
+                    status = false;
+
+                }
+            }
+
+            return status;
+        }
+        bool updateSale(int newNumber)
+        {
+            bool status = false;
+
+            using (var transaction = dBContext.Database.BeginTransaction())
+            {
+
+                try
+                {
+
+                    var any = dBContext.Sales?.FirstOrDefault(x => x.number == newNumber&&x.id!=tempSale.id);
+                    if (any != null)
+                    {
+                        AppDialogAleart.showAleartPreExistingData("توجد فاتوره سابقه بهذا الرقم");
+                        return false;
+                    }
+                  //  AppDialogAleart.showAleartNoPermissions("+jjj"+ dBContext.JournalEntries.Where(x => x.transactionId == tempSale.number && x.transactionType == transactionType.ToString()).Count());
+                    dBContext.JournalEntries.RemoveRange(dBContext.JournalEntries.Where(x => x.transactionId == tempSale.number && (x.transactionType == transactionType.ToString()||x.transactionType== TransactionType.قيد_تمتيك.ToString())));
+                    dBContext.SaveChanges();
+                    dBContext.JournalEntries.AddRange(tempJournalEntries);
+                    dBContext.SaveChanges();
+                    tempSale.SaleDetails.ToList().ForEach(x => {
+                        var anyS = newSaleDetails.FirstOrDefault(a => a.id == x.id);
+                        if (anyS == null)
+                        {
+                        
+                            dBContext.SaleDetails.Remove(x);
+                            dBContext.SaveChanges();
+                        }
+                    });
+                    tempSale.SaleDetails = newSaleDetails;
+                    dBContext.SaleDetails.AddOrUpdate(tempSale.SaleDetails.ToArray());
+                    dBContext.SaveChanges();
+                    transaction.Commit();
+                    status = true;
+                    AppDialogAleart.showAleartSuccess();
+                    lodeData();
+
+                }
+                catch 
+                {
+                    transaction.Rollback();
+                   AppDialogAleart.showAleartError();
+                    status = false;
+
+                }
+            }
+
+            return status;
+        }
+        bool updatePurchase(int newNumber)
+        {
+            bool status = false;
+
+            using (var transaction = dBContext.Database.BeginTransaction())
+            {
+
+                try
+                {
+
+                    var any = dBContext.Purchases?.FirstOrDefault(x => x.number == newNumber && x.id != tempPurchase.id);
+                    if (any != null)
+                    {
+                        AppDialogAleart.showAleartPreExistingData("توجد فاتوره سابقه بهذا الرقم");
+                        return false;
+                    }
+                    //  AppDialogAleart.showAleartNoPermissions("+jjj"+ dBContext.JournalEntries.Where(x => x.transactionId == tempSale.number && x.transactionType == transactionType.ToString()).Count());
+                    dBContext.JournalEntries.RemoveRange(dBContext.JournalEntries.Where(x => x.transactionId == tempPurchase.number && x.transactionType == transactionType.ToString()));
+                    dBContext.SaveChanges();
+                    dBContext.JournalEntries.AddRange(tempJournalEntries);
+                    dBContext.SaveChanges();
+                   tempPurchase.PurchaseDetails.ToList().ForEach(x => {
+                        var anyS = newPurchaseDetails.FirstOrDefault(a => a.id == x.id);
+                        if (anyS == null)
+                        {
+
+                            dBContext.PurchaseDetails.Remove(x);
+                            dBContext.SaveChanges();
+                        }
+                    });
+                    tempPurchase.PurchaseDetails = newPurchaseDetails;
+                    dBContext.PurchaseDetails.AddOrUpdate(tempPurchase.PurchaseDetails.ToArray());
+                    dBContext.SaveChanges();
+                    transaction.Commit();
+                    status = true;
+                    AppDialogAleart.showAleartSuccess();
+                    lodeData();
+
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    AppDialogAleart.showAleartError();
+                    status = false;
+
+                }
+            }
+
+            return status;
+        }
+        public bool delete(List<int> keys)
+        {
+            if(isSale)
+               return deleteSale(keys);
+            else return deletePurchase(keys);
+        }
+         bool deletePurchase(List<int> keys)
+        {
+            bool status = false;
+           
+                if (model.LoginData.permissions["purchase"].deletePermission.Value && !isSale)
+                {
+             
+                    if (keys.Count > 0)
+                    {
+                  
+
+                    if (AppDialogAleart.showAleartConfirmation("هل أنت متأكد انك ترغب في حذف البيانات المحدده وعددها: " + keys.Count) != DialogResult.OK)
+                            return false;
+                        using (var transaction = dBContext.Database.BeginTransaction())
+                    {
+                      
+                        try
+                            {
+                                foreach (var id in keys)
+                            {
+                           
+                                if (!find(id))
+                                        throw new Exception("حدث خطأ ما في العمليه ");
+
+                                dBContext.JournalEntries.RemoveRange(dBContext.JournalEntries.Where(x => x.transactionId == tempPurchase.number && x.transactionType == transactionType.ToString()));
+                                dBContext.PurchaseDetails.RemoveRange(tempPurchase.PurchaseDetails);
+                                dBContext.Purchases.Remove(tempPurchase);
+
+                            }
+                                status = true;
+                                AppDialogAleart.showAleartSuccess();
+                                dBContext.SaveChanges();
+                                transaction.Commit();
+                                lodeData();
+                            }
+                            catch
+                        {
+                         
+                            transaction.Rollback();
+                              AppDialogAleart.showAleartError();
+                                status = false;
+                            }
+                        }
+                    }
+                    else {
+                    
+                    AppDialogAleart.showAleartErrorData("لم تقم بتحديد اي بيانات للحذف"); }
+                }
+                else AppDialogAleart.showAleartNoPermissions();
+
+            return status;
+        }   
+        bool deleteSale(List<int> keys)
+        {
+            bool status = false;
+           
+                if (model.LoginData.permissions["sale"].deletePermission.Value && isSale)
+                {
+                    if (keys.Count > 0)
+                    {
+                        if (AppDialogAleart.showAleartConfirmation("هل أنت متأكد انك ترغب في حذف البيانات المحدده وعددها: " + keys.Count) != DialogResult.OK)
+                            return false;
+                        using (var transaction = dBContext.Database.BeginTransaction())
+                        {
+                            try
+                            {
+                                foreach (var id in keys)
+                                {
+                                    if (!find(id))
+                                        throw new Exception("حدث خطأ ما في العمليه ");
+                                   
+                                        dBContext.JournalEntries.RemoveRange(dBContext.JournalEntries.Where(x => x.transactionId == tempSale.number && x.transactionType == transactionType.ToString()));
+                                        dBContext.SaleDetails.RemoveRange(tempSale.SaleDetails);
+                                        dBContext.Sales.Remove(tempSale);
+                                   
+                                }
+                                status = true;
+                                AppDialogAleart.showAleartSuccess();
+                                dBContext.SaveChanges();
+                                transaction.Commit();
+                                lodeData();
+                            }
+                            catch
+                            {
+                                transaction.Rollback();
+                                AppDialogAleart.showAleartError();
+                                status = false;
+                            }
+                        }
+                    }
+                    else { AppDialogAleart.showAleartErrorData("لم تقم بتحديد اي بيانات للحذف"); }
+                }
+                else AppDialogAleart.showAleartNoPermissions();
+
+            return status;
+        }
+        public void selectedCustomerOrSupplier(object value)
+        {   
+           if(HasAddAndUpdateScreenDataProcessed||HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.Customer = (Customer)value ?? null;
+                else
+                    tempPurchase.Supplier = (Supplier)value ?? null;
+            }
+
+        }
+        public void selectedCurrency(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.Currency = (Currency)value ?? null;
+                else
+                    tempPurchase.Currency = (Currency)value ?? null;
+            }
+        } public void selectedStore(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.Store = (Store)value ?? null;
+                else
+                    tempPurchase.Store = (Store)value ?? null;
+            }
+        } public void selectedCashier(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.Cashier = (Cashier)value ?? null;
+                else
+                    tempPurchase.Cashier = (Cashier)value ?? null;
+            }
+        }
+        public void selectedDate(DateTime date)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.date = date;
+                else
+                    tempPurchase.date = date;
+            }
+        } 
+        public void selectedStartDate(DateTime? date)
+        {
+                startDate = date;
+           
+        } 
+        public void selectedEndDate(DateTime? date)
+        {
+           
+                endDate = date;
+        } 
+        public void selectedPriceType(string value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.priceType = value;
+                else
+                    tempPurchase.priceType = value;
+            }
+        } 
+        public void selectedPaymentType(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.paymentType = (string)value ?? null;
+                else
+                    tempPurchase.paymentType = (string)value ?? null;
+            }
+        }
+        public void selectedoOrderType(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.orderType = (string)value ?? null;
+            }
+        }
+       public void selectedEmployee(object value)
+        {
+            if (HasAddAndUpdateScreenDataProcessed || HasHomeScreenDataProcessed)
+            {
+                if (isSale)
+                    tempSale.Employee = (Employee)value ?? null;
+                else
+                    tempPurchase.Employee = (Employee)value ?? null;
+            }
+        }
+
+        public bool fillInvoiceDetail()
+        {
+           if (isSale)
+               return fillInvoiceDetailSale();
+           else return fillInvoiceDetailPurchase();
+        }
+     
+        int detailNumber = 1;
+        public bool fillInvoiceDetailSale()
+        {
+            saleDescription = ". \n تفاصيل الفاتورة/";
+            newSaleDetails =new List<SaleDetail>();
+            foreach (SaleDetail saleDetail in selectedSaleDetails.Values)
+            {
+                var CompositeItems=dBContext.CompositeItems.Where(x=>x.componentItemId==saleDetail.measurementItemId).Include(x => x.ComponentItem).ToList();
+                var m = dBContext.MeasurementsItems.FirstOrDefault(x => x.id == saleDetail.measurementItemId);
+                string price = ((saleDetail.unitPrice ?? 0) - (saleDetail.descountPrice ?? 0) * (saleDetail.unitPrice ?? 0)).Format();
+                saleDescription += $"{detailNumber}" + "\n الصنف: " + m.item.nameAr + ". الوحده: " + m.Unit.name + ". سعر الوحده: " + saleDetail.UnitPrice() + ". الكميه: " + (saleDetail.quantity ?? 0) + ". الإجمالي: " + saleDetail.TotalPrice() + "; \n";
+                detailNumber++;
+                newSaleDetails.Add(saleDetail);
+                foreach (var compositeItem in CompositeItems)
+                {
+                    newSaleDetails.Add(new SaleDetail() { descountPrice = 0, quantity = compositeItem.quantity*saleDetail.quantity, unitPrice = compositeItem.sellingPrice, measurementItemId = compositeItem.measurementItemId,itemId=compositeItem.ComponentItem.itemId
+                        
+                        , type = MeasurementsItemType.مركب.ToString() });
+                }
+            }
+            if(!newSaleDetails.Any())
+            {
+                AppDialogAleart.showAleartErrorData("لم يتم تحديد أي صنف في الفاتوره");
+                return false;
+            }
+           // AppDialogAleart.showAleartNoPermissions(purchases.Count().ToString());
+
+            // var sales = this.sales.Where(sale => (store == null || sale.storeId == store.id) && account == null);
+           // var purchases = dBContext.Purchases.Where(purchase => ( purchase.storeId == tempSale.FromStore.id&& purchase.date<tempSale.date));
+              
+           //    var t = newSaleDetails.GroupBy(s => s.measurementItemId);
+           //// AppDialogAleart.showAleartNoPermissions(t.Count().ToString());
+           // List<TotalQuantityAndPriceMeasurementItem> totalQuantityAndPriceMeasurements = new List<TotalQuantityAndPriceMeasurementItem>();
+           // // decimal y = 0;
+           // TotalProfit = 0;
+           // foreach (var group in t) {
+           //     if (group.Key != null)
+           //     {
+           //         TotalQuantityAndPriceMeasurementItem quantityAndPriceBetweenDates = new TotalQuantityAndPriceMeasurementItem() { purchased = new QuantityAndPrice() { price = 0, quantity = 0 }, salsed = new QuantityAndPrice() { price = 0, quantity = 0 } };
+           //         quantityAndPriceBetweenDates.salsed = newSaleDetails.QuantityAndPriceMeasurementItemByIdWithNotCompositeItem(group.Key.Value);
+           //         quantityAndPriceBetweenDates.purchased = purchases.QuantityAndPriceMeasurementItemByIdWithNotCompositeItem(group.Key.Value);
+           //         quantityAndPriceBetweenDates.purchased.pasicPricePerPill = dBContext.MeasurementsItems.FirstOrDefault(x => x.id == group.Key.Value).purchasePrice ?? 0;
+           //         TotalProfit += quantityAndPriceBetweenDates.finalTotalProfit();
+           //     }
+           // }
+            return true;
+        }
+
+        public bool fillInvoiceDetailPurchase()
+        {
+            newPurchaseDetails= new List<PurchaseDetail>();
+            foreach (PurchaseDetail purchaseDetail in selectedPurchaseDetails.Values)
+            {
+                newPurchaseDetails.Add(purchaseDetail);
+                var CompositeItems = dBContext.CompositeItems.Where(x => x.componentItemId == purchaseDetail.measurementItemId).Include(x => x.ComponentItem).ToList();
+              
+             
+                foreach (var compositeItem in CompositeItems)
+                {
+                    //AppDialogAleart.showAleartNoPermissions(  "ComName=" + compositeItem.ComponentItem.itemId+"mmmmmmmmmmmmmm="+ compositeItem.measurementItemId);
+
+                    //saleID = newNumber
+                    newPurchaseDetails.Add(new PurchaseDetail() {  quantity = compositeItem.quantity * purchaseDetail.quantity, unitPrice = compositeItem.purchasePrice, measurementItemId = compositeItem.measurementItemId, itemId = compositeItem.ComponentItem.itemId, type = MeasurementsItemType.مركب.ToString() });
+                }
+            }
+            if (!newPurchaseDetails.Any())
+            {
+                AppDialogAleart.showAleartErrorData("لم يتم تحديد أي صنف في الفاتوره");
+                return false;
+            }
+            return true;
+        }
+
+        public void showDialogUpdate(int id)
+        {
+            if (isSale)
+                showDialogUpdateSale(id);
+            else showDialogUpdatePurchase(id);
+            
+        }
+        public void showDialogAdd()
+        {
+            clearTempData();
+            if (isSale)
+                showDialogAddSale();
+            else showDialogAddPurchase();
+        }
+        public void showDialogView(DataGridViewRow row)
+        {
+            if(isSale)
+                showDialogViewSale(row);
+            else showDialogViewPurchase(row);
+        }
+         void showDialogUpdatePurchase(int id)
+        {
+            if (model.LoginData.permissions["purchase"].updatePermission.Value )
+            {
+                if (id != 0)
+                {
+
+                    prosessesType = ProsessesType.update;
+                    if(find(id))
+                    {
+                       // Program.homeScereen().Hide();
+                        DialogAddAndUpdteSalesSystem dialog = new DialogAddAndUpdteSalesSystem(this);
+                        dialog.ShowDialog();
+                    }
+                }
+                else AppDialogAleart.showAleartErrorData("لم تقم بتحديد أي بيانات لتعديلها");
+
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        } 
+        void showDialogUpdateSale(int id)
+        {
+            if (model.LoginData.permissions["sale"].updatePermission.Value )
+            {
+                if (id != 0)
+                {
+
+                    prosessesType = ProsessesType.update;
+                    if(find(id))
+                    {
+                      //  Program.homeScereen().Hide();
+                        DialogAddAndUpdteSalesSystem dialog = new DialogAddAndUpdteSalesSystem(this);
+                        dialog.ShowDialog();
+                    }
+                }
+                else AppDialogAleart.showAleartErrorData("لم تقم بتحديد أي بيانات لتعديلها");
+
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        }
+         void showDialogAddSale()
+        {
+            if (model.LoginData.permissions["sale"].addPermission.Value )
+            {
+               // Program.homeScereen().Hide();
+              
+                prosessesType = ProsessesType.add;
+                DialogAddAndUpdteSalesSystem dialog = new DialogAddAndUpdteSalesSystem(this);
+                dialog.ShowDialog();
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        } 
+        void showDialogAddPurchase()
+        {
+            if (model.LoginData.permissions["purchase"].addPermission.Value )
+            {
+             //   Program.homeScereen().Hide();
+              
+                prosessesType = ProsessesType.add;
+                DialogAddAndUpdteSalesSystem dialog = new DialogAddAndUpdteSalesSystem(this);
+                dialog.ShowDialog();
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        }
+         void showDialogViewSale(DataGridViewRow row)
+        {
+            if (model.LoginData.permissions["sale"].viewPermission.Value )
+            {
+                DialogShowDetailsRecorde dialogShow = new DialogShowDetailsRecorde(saleColumnsNamesInAR, row);
+                dialogShow.ShowDialog();
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        } 
+        void showDialogViewPurchase(DataGridViewRow row)
+        {
+            if (model.LoginData.permissions["purchase"].viewPermission.Value )
+            {
+                DialogShowDetailsRecorde dialogShow = new DialogShowDetailsRecorde(purchaseColumnsNamesInAR, row);
+                dialogShow.ShowDialog();
+            }
+            else AppDialogAleart.showAleartNoPermissions();
+        }
+        public void addReturn(int id)
+        {
+            if(isSale)
+                addReturnSale(id);
+                else addReturnPurchase(id);
+        }
+        void addReturnPurchase(int id)
+        {
+
+        }
+        void addReturnSale(int id) 
+        { 
+        
+            SalesReturnsController controller = new SalesReturnsController(true);
+            controller.showDialogUpdate(id);
+
+        }
+    }
+}

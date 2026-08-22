@@ -1,0 +1,1943 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0577A8A1-A538-42FB-AB77-78B92BA1E042}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AccountingSystem</RootNamespace>
+    <AssemblyName>AccountingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Basha\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <PublisherName>test1</PublisherName>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>830868F62F7FCD24369C91AD102E090812738C5B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AccountingSystem_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.Licensing.6.0.4\lib\net48\Bunifu.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms, Version=0.0.0.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.7.2.0\lib\net48\Bunifu.UI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.1.5.3">
+      <HintPath>..\..\..\..\Desktop\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentUI.NET, Version=1.0.51.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentUI.NET.1.0.51\lib\net472\FluentUI.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.6\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Krypton.Toolkit, Version=85.24.8.239, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Krypton.Toolkit.85.24.8.239\lib\net48\Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.3.1.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.5.1.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.ResourceManager.Fluent, Version=1.0.0.71, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Management.ResourceManager.Fluent.1.38.1\lib\net461\Microsoft.Azure.Management.ResourceManager.Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.32\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational.Design, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.Design.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.Relational.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.SqlServer.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer.Design, Version=1.1.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.SqlServer.Design.1.1.6\lib\net451\Microsoft.EntityFrameworkCore.SqlServer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.32\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.32\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.9.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.9.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.9.0.0\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.9.0.0\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.9.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.8.2.1\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.5.3.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=8.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.8.0.2\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=8.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.8.0.2\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.24\lib\net461\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.19\lib\net461\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.4.1\lib\net461\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.135\lib\net462\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.1.1\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=112.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.112.0.0\lib\net48\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net463\System.AppContext.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.8.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracing, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Tracing.4.3.0\lib\net462\System.Diagnostics.Tracing.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Globalization.Calendars, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Globalization.Calendars.4.3.0\lib\net46\System.Globalization.Calendars.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Interactive.Async, Version=3.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.3.0.0\lib\net45\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Expressions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Expressions.4.3.0\lib\net463\System.Linq.Expressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controller\Screen\AccountGruopController.cs" />
+    <Compile Include="controller\Screen\AccountingGuideController.cs" />
+    <Compile Include="controller\Screen\AccountStatementController.cs" />
+    <Compile Include="controller\Screen\AccountStatementWithNumberHoursController.cs" />
+    <Compile Include="controller\Screen\AreaController.cs" />
+    <Compile Include="controller\Report\BillsExchangeController.cs" />
+    <Compile Include="controller\Screen\BranchController.cs" />
+    <Compile Include="controller\Screen\ChartOfAccountController.cs" />
+    <Compile Include="controller\Screen\CashierController.cs" />
+    <Compile Include="controller\Screen\CityController.cs" />
+    <Compile Include="controller\Screen\ClassifyGroupController.cs" />
+    <Compile Include="controller\Screen\CompoundJournalEntriesController.cs" />
+    <Compile Include="controller\Report\CompositeItemsInventoryController.cs" />
+    <Compile Include="controller\Screen\FirstPeriodStockController.cs" />
+    <Compile Include="controller\Report\GeneralProfessorController.cs" />
+    <Compile Include="controller\Screen\HomeScreenController.cs" />
+    <Compile Include="controller\Report\InvoicesNumberController.cs" />
+    <Compile Include="controller\Report\ItemQuantitiesController.cs" />
+    <Compile Include="controller\Report\MovementOfItemsController.cs" />
+    <Compile Include="controller\Report\MovementOfItemsToSupplierController.cs" />
+    <Compile Include="controller\Report\ReportItemsAndStoresController.cs" />
+    <Compile Include="controller\Screen\InventoryTransferController.cs" />
+    <Compile Include="controller\Screen\PurchasesReturnsController.cs" />
+    <Compile Include="controller\Screen\SalesReturnsController.cs" />
+    <Compile Include="controller\Screen\SalesSystemController.cs" />
+    <Compile Include="controller\Screen\CurrencyController.cs" />
+    <Compile Include="controller\Screen\CustmoreController.cs" />
+    <Compile Include="controller\Screen\EmployeeController.cs" />
+    <Compile Include="controller\Screen\EmployeesTypeController.cs" />
+    <Compile Include="controller\Screen\ItemController.cs" />
+    <Compile Include="controller\Screen\DBContextController.cs" />
+    <Compile Include="controller\Screen\SimpleJournalEntriesController.cs" />
+    <Compile Include="controller\Report\StocItemsLessThanZeroController.cs" />
+    <Compile Include="controller\Screen\TreeAccountsController.cs" />
+    <Compile Include="controller\Screen\VoucherController.cs" />
+    <Compile Include="controller\Screen\SupplierController.cs" />
+    <Compile Include="controller\Screen\UnitGuideController.cs" />
+    <Compile Include="controller\Screen\StoreController.cs" />
+    <Compile Include="controller\Report\WarehouseQuantitiesController.cs" />
+    <Compile Include="core\CustomControl\CustomTable.cs" />
+    <Compile Include="core\CustomControl\CustomTable.Designer.cs">
+      <DependentUpon>CustomTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\CustomControl\CustomTablePagination.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="core\CustomControl\CustomTablePagination.Designer.cs">
+      <DependentUpon>CustomTablePagination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\CustomControl\InvoiceSearchScreen.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="core\CustomControl\InvoiceSearchScreen.Designer.cs">
+      <DependentUpon>InvoiceSearchScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\Database\Seed\DatabaseSeeder.cs" />
+    <Compile Include="core\Database\Seed\SeedCredentialsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="core\shared\AleartError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="core\shared\AleartError.Designer.cs">
+      <DependentUpon>AleartError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\shared\AleartSuccessORError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="core\shared\AleartSuccessORError.Designer.cs">
+      <DependentUpon>AleartSuccessORError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\shared\AppColor.cs" />
+    <Compile Include="core\shared\AppDialogAleart.cs" />
+    <Compile Include="core\shared\AppTable.cs" />
+    <Compile Include="core\shared\BuildControls.cs" />
+    <Compile Include="core\shared\ClassesGUI.cs" />
+    <Compile Include="core\shared\CRUD.cs" />
+    <Compile Include="core\shared\DatabaseConnection.cs" />
+    <Compile Include="core\shared\DialogShowDetailsRecorde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="core\shared\DialogShowDetailsRecorde.Designer.cs">
+      <DependentUpon>DialogShowDetailsRecorde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="core\shared\ExtensionsFunctions.cs" />
+    <Compile Include="core\shared\Functions.cs" />
+    <Compile Include="core\shared\FunctionsGUI.cs" />
+    <Compile Include="core\shared\ItemsExtensions.cs" />
+    <Compile Include="core\shared\PermissionGUI.cs" />
+    <Compile Include="core\shared\SearchCondition.cs" />
+    <Compile Include="core\shared\SharedData.cs" />
+    <Compile Include="core\shared\TablePagination.cs" />
+    <Compile Include="core\shared\test.cs" />
+    <Compile Include="core\shared\ValidatingData.cs" />
+    <Compile Include="core\shared\WidgetReportPages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loginForm.Designer.cs">
+      <DependentUpon>loginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\Area.cs" />
+    <Compile Include="model\BaseEntity.cs" />
+    <Compile Include="model\Branche.cs" />
+    <Compile Include="model\City.cs" />
+    <Compile Include="model\Currency.cs" />
+    <Compile Include="model\LoginData.cs" />
+    <Compile Include="model\Employee.cs" />
+    <Compile Include="model\Permission.cs" />
+    <Compile Include="model\Store.cs" />
+    <Compile Include="NewModel\EFModel\AccountsGroup.cs" />
+    <Compile Include="NewModel\EFModel\Area.cs" />
+    <Compile Include="NewModel\EFModel\BeginningInventory.cs" />
+    <Compile Include="NewModel\EFModel\Branch.cs" />
+    <Compile Include="NewModel\EFModel\Cashier.cs" />
+    <Compile Include="NewModel\EFModel\ChartOfAccount.cs" />
+    <Compile Include="NewModel\EFModel\City.cs" />
+    <Compile Include="NewModel\EFModel\Classify.cs" />
+    <Compile Include="NewModel\EFModel\ClassifyGroup.cs" />
+    <Compile Include="NewModel\EFModel\Company.cs" />
+    <Compile Include="NewModel\EFModel\CompositeItem.cs" />
+    <Compile Include="NewModel\EFModel\CompoundEntry.cs" />
+    <Compile Include="NewModel\EFModel\Consumption.cs" />
+    <Compile Include="NewModel\EFModel\Currency.cs" />
+    <Compile Include="NewModel\EFModel\Customer.cs" />
+    <Compile Include="NewModel\EFModel\Employee.cs" />
+    <Compile Include="NewModel\EFModel\EmployeesType.cs" />
+    <Compile Include="NewModel\EFModel\Inventory.cs" />
+    <Compile Include="NewModel\EFModel\InventoryTransfer.cs" />
+    <Compile Include="NewModel\EFModel\InventoryTransferDetail.cs" />
+    <Compile Include="NewModel\EFModel\JournalEntry.cs" />
+    <Compile Include="NewModel\EFModel\MeasurementsItem.cs" />
+    <Compile Include="NewModel\EFModel\Operation.cs" />
+    <Compile Include="NewModel\EFModel\Permission.cs" />
+    <Compile Include="NewModel\EFModel\Purchase.cs" />
+    <Compile Include="NewModel\EFModel\PurchaseDetail.cs" />
+    <Compile Include="NewModel\EFModel\AccountingDbContext.cs" />
+    <Compile Include="NewModel\EFModel\Sale.cs" />
+    <Compile Include="NewModel\EFModel\SaleDetail.cs" />
+    <Compile Include="NewModel\EFModel\SimpleEntry.cs" />
+    <Compile Include="NewModel\EFModel\Store.cs" />
+    <Compile Include="NewModel\EFModel\Supplier.cs" />
+    <Compile Include="NewModel\EFModel\Trade.cs" />
+    <Compile Include="NewModel\EFModel\TypesClassify.cs" />
+    <Compile Include="NewModel\EFModel\Unit.cs" />
+    <Compile Include="NewModel\EFModel\Voucher.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetAccountStatement.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetAccountStatementWithNumberHours.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetBills.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetCompositeItemsInventory.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetGeneralProfessor.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetInvoicesAndStores.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetItemQuantities.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetJournalEntry.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetMovementOfItems.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetMovementOfItemsToSupplier.cs" />
+    <Compile Include="NewModel\RCLDModel\DataSetReports.cs">
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NewModel\RCLDModel\DataSetReports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="NewModel\RCLDModel\DataSetStocItemsLessThanZero.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test2.Designer.cs">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Test\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatement.Designer.cs">
+      <DependentUpon>AccountStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementScreen.Designer.cs">
+      <DependentUpon>AccountStatementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementWithNumberHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementWithNumberHours.Designer.cs">
+      <DependentUpon>AccountStatementWithNumberHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\BillsExchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\BillsExchange.Designer.cs">
+      <DependentUpon>BillsExchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\CompositeItemsInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\CompositeItemsInventory.Designer.cs">
+      <DependentUpon>CompositeItemsInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementWithNumberHours2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\AccountStatementWithNumberHours2.Designer.cs">
+      <DependentUpon>AccountStatementWithNumberHours2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\GeneralProfessor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\GeneralProfessor.Designer.cs">
+      <DependentUpon>GeneralProfessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\InvoicesAndStores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\InvoicesAndStores.Designer.cs">
+      <DependentUpon>InvoicesAndStores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\InvoicesNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\InvoicesNumber.Designer.cs">
+      <DependentUpon>InvoicesNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\ItemQuantities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\ItemQuantities.Designer.cs">
+      <DependentUpon>ItemQuantities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\MovementOfItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\MovementOfItems.Designer.cs">
+      <DependentUpon>MovementOfItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\MovementOfItemsToSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\MovementOfItemsToSupplier.Designer.cs">
+      <DependentUpon>MovementOfItemsToSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\ScreensReportsGeneralProfessor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\ScreensReportsGeneralProfessor.Designer.cs">
+      <DependentUpon>ScreensReportsGeneralProfessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\StocItemsLessThanZero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\StocItemsLessThanZero.Designer.cs">
+      <DependentUpon>StocItemsLessThanZero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\TreeAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\TreeAccounts.Designer.cs">
+      <DependentUpon>TreeAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\ViewPrintingBills.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\ViewPrintingBills.Designer.cs">
+      <DependentUpon>ViewPrintingBills.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\ViewPrintingVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\ViewPrintingVoucher.Designer.cs">
+      <DependentUpon>ViewPrintingVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ReportPages\WarehouseQuantities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ReportPages\WarehouseQuantities.Designer.cs">
+      <DependentUpon>WarehouseQuantities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountGruop\AccountGruopManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountGruop\AccountGruopManagementScreen.Designer.cs">
+      <DependentUpon>AccountGruopManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountGruop\DialogAddAndUpdateAccountGruop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountGruop\DialogAddAndUpdateAccountGruop.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateAccountGruop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountingGuide\DialogAddAndUpdateAccounting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountingGuide\DialogAddAndUpdateAccounting.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateAccounting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountingGuide\TreeViewAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountingGuide\TreeViewAccounts.Designer.cs">
+      <DependentUpon>TreeViewAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AreaManagement\AreaManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AreaManagement\AreaManagementScreen.Designer.cs">
+      <DependentUpon>AreaManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\AreaManagement\DialogAddAndUpdateArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AreaManagement\DialogAddAndUpdateArea.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\BranchManagement\BranchManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\BranchManagement\BranchManagementScreen.Designer.cs">
+      <DependentUpon>BranchManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\BranchManagement\DialogAddBramch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\BranchManagement\DialogAddBramch.Designer.cs">
+      <DependentUpon>DialogAddBramch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\financialSecuritiesSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\financialSecuritiesSystem.Designer.cs">
+      <DependentUpon>financialSecuritiesSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeScereen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeScereen.Designer.cs">
+      <DependentUpon>HomeScereen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\InformationGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\InformationGuide.Designer.cs">
+      <DependentUpon>InformationGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\itemsAndWarehousesSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\itemsAndWarehousesSystem.Designer.cs">
+      <DependentUpon>itemsAndWarehousesSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="view\SupScreens\AccountingGuide\AccountingGuideScereen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\AccountingGuide\AccountingGuideScereen.Designer.cs">
+      <DependentUpon>AccountingGuideScereen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\AccountingSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\AccountingSystem.Designer.cs">
+      <DependentUpon>AccountingSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ChestManagement\ChestManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ChestManagement\ChestManagementScreen.Designer.cs">
+      <DependentUpon>ChestManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ChestManagement\DialogAddAndUpdateChest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ChestManagement\DialogAddAndUpdateChest.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateChest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CityManagement\CityManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CityManagement\CityManagementScreen.Designer.cs">
+      <DependentUpon>CityManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CityManagement\DialogAddAndUpdateCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CityManagement\DialogAddAndUpdateCity.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyGroup\ClassifyGroupScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyGroup\ClassifyGroupScreen.Designer.cs">
+      <DependentUpon>ClassifyGroupScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyGroup\DialogAddAndUpdateClassifyGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyGroup\DialogAddAndUpdateClassifyGroup.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateClassifyGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\ClassifyManagamentScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\ClassifyManagamentScreen.Designer.cs">
+      <DependentUpon>ClassifyManagamentScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogAddAndUpdateClassify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogAddAndUpdateClassify.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateClassify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogAddOrUpdateFirstPeriodStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogAddOrUpdateFirstPeriodStock.Designer.cs">
+      <DependentUpon>DialogAddOrUpdateFirstPeriodStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogSelecteIngredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogSelecteIngredient.Designer.cs">
+      <DependentUpon>DialogSelecteIngredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogSelecteMeasurementsItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\DialogSelecteMeasurementsItem.Designer.cs">
+      <DependentUpon>DialogSelecteMeasurementsItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\FirstPeriodStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\FirstPeriodStock.Designer.cs">
+      <DependentUpon>FirstPeriodStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\TreeViewItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ClassifyManagament\TreeViewItems.Designer.cs">
+      <DependentUpon>TreeViewItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CompoundJournalEntries\CompoundJournalEntriesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CompoundJournalEntries\CompoundJournalEntriesScreen.Designer.cs">
+      <DependentUpon>CompoundJournalEntriesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CompoundJournalEntries\DialogAddAndUpdateCompoundJournalEntries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CompoundJournalEntries\DialogAddAndUpdateCompoundJournalEntries.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateCompoundJournalEntries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\CurrencyManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\CurrencyManagementScreen.Designer.cs">
+      <DependentUpon>CurrencyManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\DialogAddCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\DialogAddCurrency.Designer.cs">
+      <DependentUpon>DialogAddCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\DialogUpdateCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CurrencyManagement\DialogUpdateCurrency.Designer.cs">
+      <DependentUpon>DialogUpdateCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\PurchasingAndSalesSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\PurchasingAndSalesSystem.Designer.cs">
+      <DependentUpon>PurchasingAndSalesSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\Screens\supliresAndCustmoreSystemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\Screens\supliresAndCustmoreSystemScreen.Designer.cs">
+      <DependentUpon>supliresAndCustmoreSystemScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\CustmoreMangementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\CustmoreMangementScreen.Designer.cs">
+      <DependentUpon>CustmoreMangementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\DialogAddCustmore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\DialogAddCustmore.Designer.cs">
+      <DependentUpon>DialogAddCustmore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\DialogUpdateCustmore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\CustmoreMangement\DialogUpdateCustmore.Designer.cs">
+      <DependentUpon>DialogUpdateCustmore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeeManagement\DialogAddAndUpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeeManagement\DialogAddAndUpdateEmployee.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeeManagement\EmployeeManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeeManagement\EmployeeManagementScreen.Designer.cs">
+      <DependentUpon>EmployeeManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeesTypeMangement\DialogAddAndUpdateEmployeesType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\EmployeesTypeMangement\DialogAddAndUpdateEmployeesType.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateEmployeesType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\InventoryTransferManagament\DialogAddAndUpdateInventoryTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\InventoryTransferManagament\DialogAddAndUpdateInventoryTransfer.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateInventoryTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\InventoryTransferManagament\InventoryTransferManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\InventoryTransferManagament\InventoryTransferManagementScreen.Designer.cs">
+      <DependentUpon>InventoryTransferManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ManagingDeliveryAddresses\DialogAddAndUpdateDeliveryAddresses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ManagingDeliveryAddresses\DialogAddAndUpdateDeliveryAddresses.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateDeliveryAddresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\ManagingDeliveryAddresses\ManagingDeliveryAddressesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\ManagingDeliveryAddresses\ManagingDeliveryAddressesScreen.Designer.cs">
+      <DependentUpon>ManagingDeliveryAddressesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\MoneyExchange\DialogAddAndUpdateMoneyExchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\MoneyExchange\DialogAddAndUpdateMoneyExchange.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateMoneyExchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\MoneyExchange\MoneyExchangeScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\MoneyExchange\MoneyExchangeScreen.Designer.cs">
+      <DependentUpon>MoneyExchangeScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\OpeningBalances\DialogAddAndUpdateOpeningBalances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\OpeningBalances\DialogAddAndUpdateOpeningBalances.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateOpeningBalances.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\OpeningBalances\OpeningBalancesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\OpeningBalances\OpeningBalancesScreen.Designer.cs">
+      <DependentUpon>OpeningBalancesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\DialogAddAndUpdatePurchasesReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\DialogAddAndUpdatePurchasesReturns.Designer.cs">
+      <DependentUpon>DialogAddAndUpdatePurchasesReturns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\PurchasesReturnsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\PurchasesReturnsScreen.Designer.cs">
+      <DependentUpon>PurchasesReturnsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\PurchasesSystemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\PurchasesSystem\PurchasesSystemScreen.Designer.cs">
+      <DependentUpon>PurchasesSystemScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\Receipt\DialogAddAndUpdateReceipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\Receipt\DialogAddAndUpdateReceipt.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\Receipt\ReceiptScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\Receipt\ReceiptScreen.Designer.cs">
+      <DependentUpon>ReceiptScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesReturns.Designer.cs">
+      <DependentUpon>DialogAddAndUpdteSalesReturns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesSystem.Designer.cs">
+      <DependentUpon>DialogAddAndUpdteSalesSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\SalesReturnsScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\SalesReturnsScreen.Designer.cs">
+      <DependentUpon>SalesReturnsScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\SalesSystemScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SalesSystem\SalesSystemScreen.Designer.cs">
+      <DependentUpon>SalesSystemScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SimpleJournalEntries\DialogAddAndUpdateSimpleJournalEntries.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SimpleJournalEntries\DialogAddAndUpdateSimpleJournalEntries.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateSimpleJournalEntries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SimpleJournalEntries\SimpleJournalEntriesScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SimpleJournalEntries\SimpleJournalEntriesScreen.Designer.cs">
+      <DependentUpon>SimpleJournalEntriesScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SupplierManagement\DialogAddAndUpdateSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SupplierManagement\DialogAddAndUpdateSupplier.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\SupplierManagement\SupplierManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\SupplierManagement\SupplierManagementScreen.Designer.cs">
+      <DependentUpon>SupplierManagementScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\UnitGuide\DialogAddAndUpdateUnitGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\UnitGuide\DialogAddAndUpdateUnitGuide.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateUnitGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\UnitGuide\UnitGuideScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\UnitGuide\UnitGuideScreen.Designer.cs">
+      <DependentUpon>UnitGuideScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\WarehouseManagement\DialogAddAndUpdateWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\WarehouseManagement\DialogAddAndUpdateWarehouse.Designer.cs">
+      <DependentUpon>DialogAddAndUpdateWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\SupScreens\WarehouseManagement\WarehouseManagementScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\SupScreens\WarehouseManagement\WarehouseManagementScreen.Designer.cs">
+      <DependentUpon>WarehouseManagementScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="core\shared\AleartError.resx">
+      <DependentUpon>AleartError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="core\shared\AleartSuccessORError.resx">
+      <DependentUpon>AleartSuccessORError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="core\shared\DialogShowDetailsRecorde.resx">
+      <DependentUpon>DialogShowDetailsRecorde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginForm.resx">
+      <DependentUpon>loginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test2.resx">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\AccountStatement.resx">
+      <DependentUpon>AccountStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\AccountStatementScreen.resx">
+      <DependentUpon>AccountStatementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\AccountStatementWithNumberHours.resx">
+      <DependentUpon>AccountStatementWithNumberHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\BillsExchange.resx">
+      <DependentUpon>BillsExchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\CompositeItemsInventory.resx">
+      <DependentUpon>CompositeItemsInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\AccountStatementWithNumberHours2.resx">
+      <DependentUpon>AccountStatementWithNumberHours2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\GeneralProfessor.resx">
+      <DependentUpon>GeneralProfessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\InvoicesAndStores.resx">
+      <DependentUpon>InvoicesAndStores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\InvoicesNumber.resx">
+      <DependentUpon>InvoicesNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\ItemQuantities.resx">
+      <DependentUpon>ItemQuantities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\MovementOfItems.resx">
+      <DependentUpon>MovementOfItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\MovementOfItemsToSupplier.resx">
+      <DependentUpon>MovementOfItemsToSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\ScreensReportsGeneralProfessor.resx">
+      <DependentUpon>ScreensReportsGeneralProfessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\StocItemsLessThanZero.resx">
+      <DependentUpon>StocItemsLessThanZero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\TreeAccounts.resx">
+      <DependentUpon>TreeAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\ViewPrintingBills.resx">
+      <DependentUpon>ViewPrintingBills.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\ViewPrintingVoucher.resx">
+      <DependentUpon>ViewPrintingVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ReportPages\WarehouseQuantities.resx">
+      <DependentUpon>WarehouseQuantities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Reports\AccountStatementWithNumberHours.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReporBtills.rdlc" />
+    <EmbeddedResource Include="view\Reports\Report1.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportBillsExchange.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportCompositeItems.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReporteAccountStatement.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportInvoicesNumber.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportMovementOfItems.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportMovementOfItemsToSupplier.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportStocItemsLessThanZero.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportTreeAccounts.rdlc" />
+    <EmbeddedResource Include="view\Reports\oldeReportsGeneralProfessor.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportsGeneralProfessor.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportItemQuantities.rdlc" />
+    <EmbeddedResource Include="view\Reports\ReportWarehouseQuantities.rdlc" />
+    <EmbeddedResource Include="view\Reports\temp.rdlc" />
+    <EmbeddedResource Include="view\Reports\Vouchers.rdlc" />
+    <EmbeddedResource Include="view\SupScreens\AccountGruop\AccountGruopManagementScreen.resx">
+      <DependentUpon>AccountGruopManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AccountGruop\DialogAddAndUpdateAccountGruop.resx">
+      <DependentUpon>DialogAddAndUpdateAccountGruop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AccountingGuide\DialogAddAndUpdateAccounting.resx">
+      <DependentUpon>DialogAddAndUpdateAccounting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AccountingGuide\TreeViewAccounts.resx">
+      <DependentUpon>TreeViewAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AreaManagement\AreaManagementScreen.resx">
+      <DependentUpon>AreaManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AreaManagement\DialogAddAndUpdateArea.resx">
+      <DependentUpon>DialogAddAndUpdateArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\BranchManagement\BranchManagementScreen.resx">
+      <DependentUpon>BranchManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\BranchManagement\DialogAddBramch.resx">
+      <DependentUpon>DialogAddBramch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\financialSecuritiesSystem.resx">
+      <DependentUpon>financialSecuritiesSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeScereen.resx">
+      <DependentUpon>HomeScereen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\InformationGuide.resx">
+      <DependentUpon>InformationGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\itemsAndWarehousesSystem.resx">
+      <DependentUpon>itemsAndWarehousesSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\AccountingGuide\AccountingGuideScereen.resx">
+      <DependentUpon>AccountingGuideScereen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\AccountingSystem.resx">
+      <DependentUpon>AccountingSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ChestManagement\ChestManagementScreen.resx">
+      <DependentUpon>ChestManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ChestManagement\DialogAddAndUpdateChest.resx">
+      <DependentUpon>DialogAddAndUpdateChest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CityManagement\CityManagementScreen.resx">
+      <DependentUpon>CityManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CityManagement\DialogAddAndUpdateCity.resx">
+      <DependentUpon>DialogAddAndUpdateCity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyGroup\ClassifyGroupScreen.resx">
+      <DependentUpon>ClassifyGroupScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyGroup\DialogAddAndUpdateClassifyGroup.resx">
+      <DependentUpon>DialogAddAndUpdateClassifyGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\ClassifyManagamentScreen.resx">
+      <DependentUpon>ClassifyManagamentScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\DialogAddAndUpdateClassify.resx">
+      <DependentUpon>DialogAddAndUpdateClassify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\DialogAddOrUpdateFirstPeriodStock.resx">
+      <DependentUpon>DialogAddOrUpdateFirstPeriodStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\DialogSelecteIngredient.resx">
+      <DependentUpon>DialogSelecteIngredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\DialogSelecteMeasurementsItem.resx">
+      <DependentUpon>DialogSelecteMeasurementsItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\FirstPeriodStock.resx">
+      <DependentUpon>FirstPeriodStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ClassifyManagament\TreeViewItems.resx">
+      <DependentUpon>TreeViewItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CompoundJournalEntries\CompoundJournalEntriesScreen.resx">
+      <DependentUpon>CompoundJournalEntriesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CompoundJournalEntries\DialogAddAndUpdateCompoundJournalEntries.resx">
+      <DependentUpon>DialogAddAndUpdateCompoundJournalEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CurrencyManagement\CurrencyManagementScreen.resx">
+      <DependentUpon>CurrencyManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CurrencyManagement\DialogAddCurrency.resx">
+      <DependentUpon>DialogAddCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CurrencyManagement\DialogUpdateCurrency.resx">
+      <DependentUpon>DialogUpdateCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\PurchasingAndSalesSystem.resx">
+      <DependentUpon>PurchasingAndSalesSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\Screens\supliresAndCustmoreSystemScreen.resx">
+      <DependentUpon>supliresAndCustmoreSystemScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CustmoreMangement\CustmoreMangementScreen.resx">
+      <DependentUpon>CustmoreMangementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CustmoreMangement\DialogAddCustmore.resx">
+      <DependentUpon>DialogAddCustmore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\CustmoreMangement\DialogUpdateCustmore.resx">
+      <DependentUpon>DialogUpdateCustmore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\EmployeeManagement\DialogAddAndUpdateEmployee.resx">
+      <DependentUpon>DialogAddAndUpdateEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\EmployeeManagement\EmployeeManagementScreen.resx">
+      <DependentUpon>EmployeeManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\EmployeesTypeMangement\DialogAddAndUpdateEmployeesType.resx">
+      <DependentUpon>DialogAddAndUpdateEmployeesType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\InventoryTransferManagament\DialogAddAndUpdateInventoryTransfer.resx">
+      <DependentUpon>DialogAddAndUpdateInventoryTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\InventoryTransferManagament\InventoryTransferManagementScreen.resx">
+      <DependentUpon>InventoryTransferManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\ManagingDeliveryAddresses\ManagingDeliveryAddressesScreen.resx">
+      <DependentUpon>ManagingDeliveryAddressesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\MoneyExchange\DialogAddAndUpdateMoneyExchange.resx">
+      <DependentUpon>DialogAddAndUpdateMoneyExchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\MoneyExchange\MoneyExchangeScreen.resx">
+      <DependentUpon>MoneyExchangeScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\OpeningBalances\DialogAddAndUpdateOpeningBalances.resx">
+      <DependentUpon>DialogAddAndUpdateOpeningBalances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\OpeningBalances\OpeningBalancesScreen.resx">
+      <DependentUpon>OpeningBalancesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\PurchasesSystem\DialogAddAndUpdatePurchasesReturns.resx">
+      <DependentUpon>DialogAddAndUpdatePurchasesReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\PurchasesSystem\PurchasesReturnsScreen.resx">
+      <DependentUpon>PurchasesReturnsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\PurchasesSystem\PurchasesSystemScreen.resx">
+      <DependentUpon>PurchasesSystemScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\Receipt\DialogAddAndUpdateReceipt.resx">
+      <DependentUpon>DialogAddAndUpdateReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\Receipt\ReceiptScreen.resx">
+      <DependentUpon>ReceiptScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesReturns.resx">
+      <DependentUpon>DialogAddAndUpdteSalesReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SalesSystem\DialogAddAndUpdteSalesSystem.resx">
+      <DependentUpon>DialogAddAndUpdteSalesSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SalesSystem\SalesReturnsScreen.resx">
+      <DependentUpon>SalesReturnsScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SalesSystem\SalesSystemScreen.resx">
+      <DependentUpon>SalesSystemScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SimpleJournalEntries\DialogAddAndUpdateSimpleJournalEntries.resx">
+      <DependentUpon>DialogAddAndUpdateSimpleJournalEntries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SimpleJournalEntries\SimpleJournalEntriesScreen.resx">
+      <DependentUpon>SimpleJournalEntriesScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SupplierManagement\DialogAddAndUpdateSupplier.resx">
+      <DependentUpon>DialogAddAndUpdateSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\SupplierManagement\SupplierManagementScreen.resx">
+      <DependentUpon>SupplierManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\UnitGuide\DialogAddAndUpdateUnitGuide.resx">
+      <DependentUpon>DialogAddAndUpdateUnitGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\UnitGuide\UnitGuideScreen.resx">
+      <DependentUpon>UnitGuideScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\WarehouseManagement\DialogAddAndUpdateWarehouse.resx">
+      <DependentUpon>DialogAddAndUpdateWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\SupScreens\WarehouseManagement\WarehouseManagementScreen.resx">
+      <DependentUpon>WarehouseManagementScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="NewModel\RCLDModel\DataSetReports.xsc">
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
+    </None>
+    <None Include="NewModel\RCLDModel\DataSetReports.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReports.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="NewModel\RCLDModel\DataSetReports.xss">
+      <DependentUpon>DataSetReports.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\AccountingSystem.controller.DataSetInvoicesNumber.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.controller.DataSetJournalEntry.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.EFModel.ChartOfAccount.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.EFModel.JournalEntry.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.AccountStatement.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetAccountStatement.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetAccountStatementWithNumberHours.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetBills.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetCompositeItemsInventory.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetGeneralProfessor.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetItemQuantities.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetJournalEntry.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetMovementOfItems.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetMovementOfItemsToSupplier.datasource" />
+    <None Include="Properties\DataSources\AccountingSystem.NewModel.RCLDModel.DataSetStocItemsLessThanZero.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="AccountingSystem_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LsGroup %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhMenu %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroiconsSolidMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IonHome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IonHome %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IonHome %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignSetting1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FaRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FaRefresh %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FaRefresh %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcBaselineLock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcOutlineLock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcOutlineLock1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignCurrencyExchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignCurrencyExchange %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignPalace %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignPalace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignCurrencyExchange %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignCurrencyExchange %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZmdiGlobe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignCurrencyExchange %283%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LsGlobe %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fa6SolidUsers %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fa6SolidUsers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentCameraAdd48Filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WpfSearch %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentEmojiHighContrastPlus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FaSolidPen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiDeleteOutline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LucideView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsViewColumnOutline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsViewAgendaOutline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FeatherSave %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiPrinter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RivetIconsShare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiMicrosoftExcel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TdesignMoney.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsAccountTreeRounded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimpleIconsGooglemaps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SimpleIconsGooglemaps %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroiconsUsers20Solid %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroiconsUsers20Solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntypoUsers %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntypoUsers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IonSend %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiLockReset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconParkSolidCorrect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PajamasFalsePositive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatRefresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatCancel %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatCancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PajamasInformation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EntypoUsers %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MingcuteClassify2Fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VaadinInvoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsReceiptLongOutline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsPhoneAndroidOutline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhInvoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FaSolidSortNumericUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentMdl2FinancialSolid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentReceiptMoney16Regular.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhReport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhReport %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AkarIconsStatisticUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CarbonRequestQuote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsRuleSettingsRounded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhSystemfolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OuiReporter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhhNews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BytesizeSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OouiSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OuiReporter1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatCancel %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatCancel %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TopcoatCancel %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSubtractLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentMdl2Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FluentMdl2Cancel %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSubtractLine %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSubtractLine %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhCopy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhCopy %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WpfSearch %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WpfSearch %285%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Fill %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Fill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Line %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Line %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Line %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RiSwap2Fill %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TablerReplaceFilled %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TablerReplaceFilled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TablerReplaceFilled %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZmdiAccountCalendar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZmdiAccountCalendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FormkitCurrency %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FormkitCurrency %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FormkitCurrency %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsCurrencyExchange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MingcuteClassifyFill %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MingcuteClassifyFill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MingcuteClassify2Fill %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MingcuteClassify2Fill %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TablerManualGearboxFilled %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TablerManualGearboxFilled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroiconsBuildingStorefrontSolid %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HeroiconsBuildingStorefrontSolid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MakiWarehouse11 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MakiWarehouse11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcTwotoneReceiptLong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcTwotoneReceiptLong %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcSharpTransferWithinAStation %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IcSharpTransferWithinAStation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsTransferWithinAStation %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsTransferWithinAStation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsPrint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TypcnPlus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TypcnPlus %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhPlusCircleDuotone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhPlusCircleDuotone %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsPrintDisabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SubwayPrint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PhPlusCircleDuotone %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IonEye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AntDesignSettingFilled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EpSetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DSC_0097 copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsAddCircleOutlineRounded %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsAddCircleOutlineRounded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsCancelOutlineRounded %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaterialSymbolsCancelOutlineRounded.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="مياه-الصانعة2.ico" />
+    <None Include="Resources\LsiconTreeOutline %281%29.png" />
+    <None Include="Resources\LsiconTreeOutline.png" />
+    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\TablerArrowBadgeDownFilled.png" />
+    <None Include="Resources\TablerArrowBadgeUpFilled.png" />
+    <None Include="Resources\BxShareAlt.png" />
+    <None Include="Resources\MemoryChestFill %281%29.png" />
+    <None Include="Resources\MemoryChestFill.png" />
+    <None Include="Resources\IconParkTwotoneAllApplication %281%29.png" />
+    <None Include="Resources\IconParkTwotoneAllApplication.png" />
+    <None Include="Resources\LsGroup %282%29.png" />
+    <None Include="Resources\SiGlyphTrolleyBriefcase %282%29.png" />
+    <None Include="Resources\SiGlyphTrolleyBriefcase.png" />
+    <None Include="Resources\MaterialSymbolsStackedLineChartRounded.png" />
+    <None Include="Resources\MaterialSymbolsStackedLineChartRounded %281%29.png" />
+    <None Include="Resources\OiGraph %281%29.png" />
+    <None Include="Resources\OiGraph.png" />
+    <None Include="Resources\IcTwotoneInsertChart %281%29.png" />
+    <None Include="Resources\IcTwotoneInsertChart.png" />
+    <None Include="Resources\MdiNumeric6BoxMultipleOutline %281%29.png" />
+    <None Include="Resources\MdiNumeric6BoxMultipleOutline.png" />
+    <None Include="Resources\MynauiInfoOctagonSolid %281%29.png" />
+    <None Include="Resources\MynauiInfoOctagonSolid.png" />
+    <None Include="Resources\MynauiInfoOctagonSolid %282%29.png" />
+    <None Include="Resources\HugeiconsShoppingBasket02 %281%29.png" />
+    <None Include="Resources\HugeiconsShoppingBasket02.png" />
+    <None Include="Resources\MdiCartOutline %281%29.png" />
+    <None Include="Resources\MdiCartOutline.png" />
+    <None Include="Resources\SolarUserCircleBold.png" />
+    <None Include="Resources\StreamlineImagePictureLandscape2PhotosPhotoLandscapePicturePhotographyCameraPictures.png" />
+    <None Include="Resources\pictureItems.png" />
+    <None Include="Resources\MingcuteShoppingBag1Fill.png" />
+    <None Include="Resources\MaterialSymbolsShoppingCart.png" />
+    <None Include="Resources\BxsCategory.png" />
+    <None Include="Resources\EntypoUsers %283%29.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconParkTwotoneAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IconParkTwotoneAdd %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Instagram Trends 2022 _ _ Graphic Design Junction.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MdiMinus %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MemoryClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>

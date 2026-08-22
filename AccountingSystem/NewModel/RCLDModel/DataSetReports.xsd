@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetReports" targetNamespace="http://tempuri.org/DataSetReports.xsd" xmlns:mstns="http://tempuri.org/DataSetReports.xsd" xmlns="http://tempuri.org/DataSetReports.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="AccountingSystemReportConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AccountingSystemReportConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AccountingSystem.Properties.Settings.GlobalReference.Default.AccountingSystemReportConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChartOfAccountsTableAdapter" GeneratorDataComponentClassName="ChartOfAccountsTableAdapter" Name="ChartOfAccounts" UserDataComponentName="ChartOfAccountsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AccountingSystemReportConnectionString (Settings)" DbObjectName="AccountingSystemDB.dbo.ChartOfAccounts" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ChartOfAccounts.accountNumber, ChartOfAccounts.name, ChartOfAccounts.type, ChartOfAccounts.rankk, ChartOfAccounts_1.accountNumber AS parentNumber, ChartOfAccounts_1.name AS parentName, 
+                  ChartOfAccounts.natureOfAccount, ChartOfAccounts_1.id, ChartOfAccounts.id AS Expr1
+FROM     ChartOfAccounts LEFT OUTER JOIN
+                  ChartOfAccounts AS ChartOfAccounts_1 ON ChartOfAccounts.parentId = ChartOfAccounts_1.id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="accountNumber" DataSetColumn="accountNumber" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="type" DataSetColumn="type" />
+              <Mapping SourceColumn="rankk" DataSetColumn="rankk" />
+              <Mapping SourceColumn="parentNumber" DataSetColumn="parentNumber" />
+              <Mapping SourceColumn="parentName" DataSetColumn="parentName" />
+              <Mapping SourceColumn="natureOfAccount" DataSetColumn="natureOfAccount" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SearchJournalEntriesTableAdapter" GeneratorDataComponentClassName="SearchJournalEntriesTableAdapter" Name="SearchJournalEntries" UserDataComponentName="SearchJournalEntriesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AccountingSystemReportConnectionString (Settings)" DbObjectName="AccountingSystemDB.dbo.SearchJournalEntries" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Search" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Search" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Search">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SearchJournalEntries</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@searchAccount" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@searchGroup" Precision="0" ProviderType="NVarChar" Scale="0" Size="100" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@searchCurrency" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@startDate" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@endDate" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="debit" DataSetColumn="debit" />
+              <Mapping SourceColumn="credit" DataSetColumn="credit" />
+              <Mapping SourceColumn="currency" DataSetColumn="currency" />
+              <Mapping SourceColumn="date" DataSetColumn="date" />
+              <Mapping SourceColumn="type" DataSetColumn="type" />
+              <Mapping SourceColumn="description" DataSetColumn="description" />
+              <Mapping SourceColumn="account" DataSetColumn="account" />
+              <Mapping SourceColumn="groupN" DataSetColumn="groupN" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="DataSetReports" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetReports">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ChartOfAccounts" msprop:Generator_RowEvHandlerName="ChartOfAccountsRowChangeEventHandler" msprop:Generator_RowDeletedName="ChartOfAccountsRowDeleted" msprop:Generator_RowDeletingName="ChartOfAccountsRowDeleting" msprop:Generator_RowEvArgName="ChartOfAccountsRowChangeEvent" msprop:Generator_TablePropName="ChartOfAccounts" msprop:Generator_RowChangedName="ChartOfAccountsRowChanged" msprop:Generator_UserTableName="ChartOfAccounts" msprop:Generator_RowChangingName="ChartOfAccountsRowChanging" msprop:Generator_RowClassName="ChartOfAccountsRow" msprop:Generator_TableClassName="ChartOfAccountsDataTable" msprop:Generator_TableVarName="tableChartOfAccounts">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnVarNameInTable="columnid" type="xs:int" minOccurs="0" />
+              <xs:element name="accountNumber" msprop:Generator_ColumnPropNameInTable="accountNumberColumn" msprop:Generator_ColumnPropNameInRow="accountNumber" msprop:Generator_UserColumnName="accountNumber" msprop:Generator_ColumnVarNameInTable="columnaccountNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnVarNameInTable="columnname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="type" msprop:Generator_ColumnPropNameInTable="typeColumn" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnVarNameInTable="columntype">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rankk" msprop:Generator_ColumnPropNameInTable="rankkColumn" msprop:Generator_ColumnPropNameInRow="rankk" msprop:Generator_UserColumnName="rankk" msprop:Generator_ColumnVarNameInTable="columnrankk" type="xs:int" />
+              <xs:element name="parentNumber" msprop:Generator_ColumnPropNameInTable="parentNumberColumn" msprop:Generator_ColumnPropNameInRow="parentNumber" msprop:Generator_UserColumnName="parentNumber" msprop:Generator_ColumnVarNameInTable="columnparentNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="parentName" msprop:Generator_ColumnPropNameInTable="parentNameColumn" msprop:Generator_ColumnPropNameInRow="parentName" msprop:Generator_UserColumnName="parentName" msprop:Generator_ColumnVarNameInTable="columnparentName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="natureOfAccount" msprop:Generator_ColumnPropNameInTable="natureOfAccountColumn" msprop:Generator_ColumnPropNameInRow="natureOfAccount" msprop:Generator_UserColumnName="natureOfAccount" msprop:Generator_ColumnVarNameInTable="columnnatureOfAccount">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SearchJournalEntries" msprop:Generator_RowEvHandlerName="SearchJournalEntriesRowChangeEventHandler" msprop:Generator_RowDeletedName="SearchJournalEntriesRowDeleted" msprop:Generator_RowDeletingName="SearchJournalEntriesRowDeleting" msprop:Generator_RowEvArgName="SearchJournalEntriesRowChangeEvent" msprop:Generator_TablePropName="SearchJournalEntries" msprop:Generator_RowChangedName="SearchJournalEntriesRowChanged" msprop:Generator_UserTableName="SearchJournalEntries" msprop:Generator_RowChangingName="SearchJournalEntriesRowChanging" msprop:Generator_RowClassName="SearchJournalEntriesRow" msprop:Generator_TableClassName="SearchJournalEntriesDataTable" msprop:Generator_TableVarName="tableSearchJournalEntries">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="debit" msprop:Generator_ColumnPropNameInTable="debitColumn" msprop:Generator_ColumnPropNameInRow="debit" msprop:Generator_UserColumnName="debit" msprop:Generator_ColumnVarNameInTable="columndebit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="credit" msprop:Generator_ColumnPropNameInTable="creditColumn" msprop:Generator_ColumnPropNameInRow="credit" msprop:Generator_UserColumnName="credit" msprop:Generator_ColumnVarNameInTable="columncredit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="currency" msprop:Generator_ColumnPropNameInTable="currencyColumn" msprop:Generator_ColumnPropNameInRow="currency" msprop:Generator_UserColumnName="currency" msprop:Generator_ColumnVarNameInTable="columncurrency" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_UserColumnName="date" msprop:Generator_ColumnVarNameInTable="columndate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="type" msprop:Generator_ColumnPropNameInTable="typeColumn" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnVarNameInTable="columntype" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_UserColumnName="description" msprop:Generator_ColumnVarNameInTable="columndescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="account" msprop:Generator_ColumnPropNameInTable="accountColumn" msprop:Generator_ColumnPropNameInRow="account" msprop:Generator_UserColumnName="account" msprop:Generator_ColumnVarNameInTable="columnaccount">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="groupN" msprop:Generator_ColumnPropNameInTable="groupNColumn" msprop:Generator_ColumnPropNameInRow="groupN" msprop:Generator_UserColumnName="groupN" msprop:Generator_ColumnVarNameInTable="columngroupN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

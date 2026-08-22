@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="WhhMenu (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhMenu (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WpfSearch (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WpfSearch (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcOutlineLock1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcOutlineLock1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EntypoUsers (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EntypoUsers (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IonHome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IonHome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiMicrosoftExcel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiMicrosoftExcel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiDeleteOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiDeleteOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerReplaceFilled (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerReplaceFilled (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Fill (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Fill (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconParkSolidCorrect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconParkSolidCorrect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcTwotoneInsertChart (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcTwotoneInsertChart (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcTwotoneReceiptLong" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcTwotoneReceiptLong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsGroup (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LsGroup (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatCancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatCancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatCancel (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatCancel (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsPrint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsPrint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiMinus (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiMinus (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsPhoneAndroidOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsPhoneAndroidOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MynauiInfoOctagonSolid (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MynauiInfoOctagonSolid (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerReplaceFilled (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerReplaceFilled (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemoryChestFill (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemoryChestFill (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FaSolidPen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaSolidPen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsStackedLineChartRounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsStackedLineChartRounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconParkTwotoneAdd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconParkTwotoneAdd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TypcnPlus (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TypcnPlus (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsGlobe (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LsGlobe (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StreamlineImagePictureLandscape2PhotosPhotoLandscapePicturePhotographyCameraPictures" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StreamlineImagePictureLandscape2PhotosPhotoLandscapePicturePhotographyCameraPictures.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SolarUserCircleBold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SolarUserCircleBold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiNumeric6BoxMultipleOutline (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiNumeric6BoxMultipleOutline (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PajamasFalsePositive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PajamasFalsePositive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HugeiconsShoppingBasket02 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HugeiconsShoppingBasket02 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhSystemfolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhSystemfolder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MakiWarehouse11 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MakiWarehouse11 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSubtractLine (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSubtractLine (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroiconsSolidMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroiconsSolidMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemoryChestFill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemoryChestFill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteShoppingBag1Fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteShoppingBag1Fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Fill (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Fill (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SiGlyphTrolleyBriefcase (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SiGlyphTrolleyBriefcase (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PhCopy (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PhCopy (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignCurrencyExchange (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignCurrencyExchange (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MemoryClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MemoryClose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhReport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SubwayPrint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SubwayPrint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteClassify2Fill (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteClassify2Fill (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerArrowBadgeDownFilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerArrowBadgeDownFilled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentMdl2FinancialSolid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentMdl2FinancialSolid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignCurrencyExchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignCurrencyExchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteClassifyFill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteClassifyFill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSubtractLine (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSubtractLine (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsTransferWithinAStation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsTransferWithinAStation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsAddCircleOutlineRounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsAddCircleOutlineRounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsViewAgendaOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsViewAgendaOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcTwotoneInsertChart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcTwotoneInsertChart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Line (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Line (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZmdiAccountCalendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZmdiAccountCalendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhInvoice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhInvoice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsShoppingCart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsShoppingCart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BxShareAlt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BxShareAlt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OuiReporter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OuiReporter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SiGlyphTrolleyBriefcase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SiGlyphTrolleyBriefcase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerReplaceFilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerReplaceFilled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsPrintDisabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsPrintDisabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PhCopy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PhCopy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Line (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Line (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MynauiInfoOctagonSolid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MynauiInfoOctagonSolid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsCurrencyExchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsCurrencyExchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FaRefresh (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaRefresh (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FormkitCurrency (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FormkitCurrency (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AkarIconsStatisticUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AkarIconsStatisticUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsAccountTreeRounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsAccountTreeRounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignCurrencyExchange (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignCurrencyExchange (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconParkTwotoneAllApplication (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconParkTwotoneAllApplication (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OiGraph (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OiGraph (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FeatherSave (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FeatherSave (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentEmojiHighContrastPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentEmojiHighContrastPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BytesizeSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BytesizeSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroiconsUsers20Solid (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroiconsUsers20Solid (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteClassifyFill (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteClassifyFill (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RivetIconsShare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RivetIconsShare.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcTwotoneReceiptLong (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcTwotoneReceiptLong (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsTransferWithinAStation (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsTransferWithinAStation (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FormkitCurrency (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FormkitCurrency (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PhPlusCircleDuotone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PhPlusCircleDuotone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WpfSearch (5)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WpfSearch (5)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsRuleSettingsRounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsRuleSettingsRounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhReport (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhReport (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcSharpTransferWithinAStation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcSharpTransferWithinAStation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OiGraph" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OiGraph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsReceiptLongOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsReceiptLongOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSubtractLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSubtractLine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pictureItems" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pictureItems.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcBaselineLock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcBaselineLock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignMoney" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignMoney.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiPrinter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiPrinter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MakiWarehouse11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MakiWarehouse11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcSharpTransferWithinAStation (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcSharpTransferWithinAStation (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatCancel (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatCancel (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PhPlusCircleDuotone (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PhPlusCircleDuotone (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IcOutlineLock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IcOutlineLock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PajamasInformation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PajamasInformation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IonEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IonEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatCancel (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatCancel (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiCartOutline (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiCartOutline (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroiconsBuildingStorefrontSolid (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroiconsBuildingStorefrontSolid (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FaRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiCartOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiCartOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fa6SolidUsers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fa6SolidUsers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsViewColumnOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsViewColumnOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignPalace (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignPalace (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BxsCategory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BxsCategory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LucideView" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LucideView.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroiconsUsers20Solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroiconsUsers20Solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiLockReset" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiLockReset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentCameraAdd48Filled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentCameraAdd48Filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OuiReporter1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OuiReporter1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EntypoUsers (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EntypoUsers (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiNumeric6BoxMultipleOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiNumeric6BoxMultipleOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FaRefresh (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaRefresh (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WpfSearch (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WpfSearch (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsCancelOutlineRounded (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsCancelOutlineRounded (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EntypoUsers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EntypoUsers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsCancelOutlineRounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsCancelOutlineRounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZmdiAccountCalendar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZmdiAccountCalendar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AntDesignSettingFilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AntDesignSettingFilled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerArrowBadgeUpFilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerArrowBadgeUpFilled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HugeiconsShoppingBasket02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HugeiconsShoppingBasket02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerManualGearboxFilled (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerManualGearboxFilled (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IonSend (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IonSend (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CarbonRequestQuote" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CarbonRequestQuote.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatCancel (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatCancel (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteClassify2Fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteClassify2Fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconParkTwotoneAdd (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconParkTwotoneAdd (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HeroiconsBuildingStorefrontSolid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroiconsBuildingStorefrontSolid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MynauiInfoOctagonSolid (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MynauiInfoOctagonSolid (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OouiSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OouiSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fa6SolidUsers (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fa6SolidUsers (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PhPlusCircleDuotone (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PhPlusCircleDuotone (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhhNews" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhhNews.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FormkitCurrency (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FormkitCurrency (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignSetting1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignSetting1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TypcnPlus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TypcnPlus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentMdl2Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentMdl2Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ZmdiGlobe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZmdiGlobe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MdiRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MdiRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignCurrencyExchange (3)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignCurrencyExchange (3)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IonHome (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IonHome (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsGroup (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LsGroup (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignCurrencyExchange (2)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignCurrencyExchange (2)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsStackedLineChartRounded (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsStackedLineChartRounded (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EntypoUsers (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EntypoUsers (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TdesignPalace" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TdesignPalace.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EpSetting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EpSetting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TablerManualGearboxFilled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TablerManualGearboxFilled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SimpleIconsGooglemaps (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SimpleIconsGooglemaps (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VaadinInvoice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VaadinInvoice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Instagram Trends 2022 _ _ Graphic Design Junction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Instagram Trends 2022 _ _ Graphic Design Junction.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TopcoatRefresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TopcoatRefresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RiSwap2Line (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RiSwap2Line (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconParkTwotoneAllApplication" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconParkTwotoneAllApplication.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentMdl2Cancel (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentMdl2Cancel (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MaterialSymbolsAddCircleOutlineRounded (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaterialSymbolsAddCircleOutlineRounded (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IonHome (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IonHome (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FaSolidSortNumericUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FaSolidSortNumericUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SimpleIconsGooglemaps" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SimpleIconsGooglemaps.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FluentReceiptMoney16Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FluentReceiptMoney16Regular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MingcuteClassify2Fill (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MingcuteClassify2Fill (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsiconTreeOutline (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LsiconTreeOutline (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LsiconTreeOutline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LsiconTreeOutline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

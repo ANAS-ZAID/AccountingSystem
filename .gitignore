@@ -1,0 +1,35 @@
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+
+# NuGet packages (restore these instead of committing them)
+packages/
+*.nupkg
+
+# Visual Studio cache/options
+*.VC.db
+*.VC.VC.opendb
+*.opendb
+*.opensdf
+*.sdf
+
+# Test results
+TestResults/
+
+# Logs/temp
+*.log
+*.tmp
+*.temp
+
+# OS files
+Thumbs.db
+.DS_Store
